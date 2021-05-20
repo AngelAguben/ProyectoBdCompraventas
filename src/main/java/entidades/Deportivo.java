@@ -1,0 +1,73 @@
+package entidades;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+/**
+ * The persistent class for the deportivo database table.
+ * 
+ */
+@Entity
+//Especificamos la NamedQuery para que funcione
+@NamedQuery(name = "Deportivo.findAll", query = "SELECT d FROM Deportivo d")
+public class Deportivo implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	// Definimos después de @Id cual será la id de la tabla
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int coddepor;
+
+	private boolean packaero;
+
+	private boolean turbo;
+
+	// bi-directional many-to-one association to Coche
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "codcoche")
+	private Coche coche;
+
+	// Constructor sin parámetros
+	public Deportivo() {
+	}
+
+	// GETTERS AND SETTERS
+	public int getCoddepor() {
+		return this.coddepor;
+	}
+
+	public void setCoddepor(int coddepor) {
+		this.coddepor = coddepor;
+	}
+
+	public boolean getPackaero() {
+		return this.packaero;
+	}
+
+	public void setPackaero(boolean packaero) {
+		this.packaero = packaero;
+	}
+
+	public boolean getTurbo() {
+		return this.turbo;
+	}
+
+	public void setTurbo(boolean turbo) {
+		this.turbo = turbo;
+	}
+
+	public Coche getCoche() {
+		return this.coche;
+	}
+
+	public void setCoche(Coche coche) {
+		this.coche = coche;
+	}
+
+	// ToString
+	@Override
+	public String toString() {
+		return "Deportivo [coddepor=" + coddepor + ", packaero=" + packaero + ", turbo=" + turbo + ", coche=" + coche
+				+ "]";
+	}
+}
