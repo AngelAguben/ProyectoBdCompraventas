@@ -28,8 +28,8 @@ public class PruebaControladorTrabajador {
 	private static void imprimirEntidades(ControladorTrabajador ct) {
 		System.out.println("ENTIDADES EN LA BASE DE DATOS ---------------");
 		// Imprimiremos la lista de trabajadores
-		for (Trabajador t : ct.findAll()) {
-			System.out.println(t);
+		for (Trabajador trabajador : ct.findAll()) {
+			System.out.println(trabajador);
 		}
 	}
 }

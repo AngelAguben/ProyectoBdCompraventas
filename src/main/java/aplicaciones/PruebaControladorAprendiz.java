@@ -32,8 +32,8 @@ public class PruebaControladorAprendiz {
 	private static void imprimirEntidades(ControladorAprendiz ca) {
 		System.out.println("ENTIDADES EN LA BASE DE DATOS ---------------");
 		// Imprimiremos la lista de aprendices
-		for (Aprendiz c : ca.findAll()) {
-			System.out.println(c);
+		for (Aprendiz aprendiz : ca.findAll()) {
+			System.out.println(aprendiz);
 		}
 	}
 }

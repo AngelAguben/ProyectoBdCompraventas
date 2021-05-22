@@ -7,21 +7,20 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import entidades.Aprendiz;
+import entidades.Deportivo;
 
-public class ControladorAprendiz {
-
+public class ControladorDeportivo {
 	// Factoria para obtener objetos EntityManager
 	private static EntityManagerFactory entityManagerFactory = Persistence
 			.createEntityManagerFactory("ProyectoCompraventa");
 	private EntityManager em;
 	private Query consulta;
 
-	// Este método borrará un aprendiz indicado por parámetros
-	public void borrarAprendiz(Aprendiz a) {
+	// Este método borrará un Deportivo indicado por parámetros
+	public void borrarDeportivo(Deportivo a) {
 		this.em = entityManagerFactory.createEntityManager();
-		Aprendiz aux = null;
-		em.getTransaction().begin();
+		Deportivo aux = null;
+		this.em.getTransaction().begin();
 		// Si a no es un objeto gestionado por el contexto de persistencia
 		if (!this.em.contains(a)) {
 			// Carga a en el contexto de persistencia y se guarda en aux
@@ -36,9 +35,9 @@ public class ControladorAprendiz {
 		this.em.close();
 	}
 
-	// Este método modificará un aprendiz pasado por parámetros
-	public void modifyAprendiz(Aprendiz a) {
-		em = entityManagerFactory.createEntityManager();
+	// Este método modificará un Deportivo pasado por parámetros
+	public void modifyDeportivo(Deportivo a) {
+		this.em = entityManagerFactory.createEntityManager();
 		// En este caso es necesario iniciar una transacción en la base de datos
 		// porque vamos a persistir información en la misma
 		this.em.getTransaction().begin();
@@ -54,9 +53,9 @@ public class ControladorAprendiz {
 
 	}
 
-	// Este método creará un aprendiz pasado por parámetros
-	public void createAprendiz(Aprendiz a) {
-		em = entityManagerFactory.createEntityManager();
+	// Este método creará un Deportivo pasado por parámetros
+	public void createDeportivo(Deportivo a) {
+		this.em = entityManagerFactory.createEntityManager();
 		// En este caso es necesario iniciar una transacción en la base de datos
 		// porque vamos a persistir información en la misma
 		this.em.getTransaction().begin();
@@ -69,27 +68,26 @@ public class ControladorAprendiz {
 		this.em.close();
 	}
 
-	// Este método encontrará un aprendiz pasando por parámetros su pk y lo
+	// Este método encontrará un Deportivo pasando por parámetros su pk y lo
 	// devolverá
-	public Aprendiz findByPK(int pk) {
-		em = entityManagerFactory.createEntityManager();
-		Aprendiz aux = null;
+	public Deportivo findByPK(int pk) {
+		this.em = entityManagerFactory.createEntityManager();
+		Deportivo aux = null;
 		// Se crea el objeto Query a partir de una SQL nativa
-		consulta = this.em.createNativeQuery("Select * from aprendiz where codaprendiz = ?", Aprendiz.class);
-		consulta.setParameter(1, pk);
-		aux = (Aprendiz) consulta.getSingleResult();
+		this.consulta = em.createNativeQuery("Select * from Deportivo where codDeportivo = ?", Deportivo.class);
+		this.consulta.setParameter(1, pk);
+		aux = (Deportivo) consulta.getSingleResult();
 		this.em.close();
 		return aux;
 
 	}
 
-	// Este método devolverá una lista de todos los aprendices de la base de datos
-	public List<Aprendiz> findAll() {
-		em = entityManagerFactory.createEntityManager();
-		consulta = this.em.createNamedQuery("Aprendiz.findAll");
-		List<Aprendiz> listaAprendiz = (List<Aprendiz>) consulta.getResultList();
+	// Este método devolverá una lista de todos los Deportivos de la base de datos
+	public List<Deportivo> findAll() {
+		this.em = entityManagerFactory.createEntityManager();
+		this.consulta = em.createNamedQuery("Deportivo.findAll");
+		List<Deportivo> listaDeportivo = (List<Deportivo>) consulta.getResultList();
 		this.em.close();
-		return listaAprendiz;
+		return listaDeportivo;
 	}
-
 }

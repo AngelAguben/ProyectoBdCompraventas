@@ -32,8 +32,8 @@ public class PruebaControladorCliente {
 	private static void imprimirEntidades(ControladorCliente cc) {
 		System.out.println("ENTIDADES EN LA BASE DE DATOS ---------------");
 		// Imprimiremos la lista de clientes
-		for (Cliente c : cc.findAll()) {
-			System.out.println(c);
+		for (Cliente cliente : cc.findAll()) {
+			System.out.println(cliente);
 		}
 	}
 

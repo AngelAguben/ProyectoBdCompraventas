@@ -18,10 +18,11 @@ public class Suv implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codsuv;
 
-	private byte plazas;
+	private int plazas;
 
 	// bi-directional many-to-one association to Coche
 	@ManyToOne(fetch = FetchType.LAZY)
+	// Insertará la columna de la FK que viene de Coche
 	@JoinColumn(name = "codcoche")
 	private Coche coche;
 
@@ -38,11 +39,11 @@ public class Suv implements Serializable {
 		this.codsuv = codsuv;
 	}
 
-	public byte getPlazas() {
+	public int getPlazas() {
 		return this.plazas;
 	}
 
-	public void setPlazas(byte plazas) {
+	public void setPlazas(int plazas) {
 		this.plazas = plazas;
 	}
 

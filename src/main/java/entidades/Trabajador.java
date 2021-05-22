@@ -33,7 +33,7 @@ public class Trabajador implements Serializable {
 
 	// bi-directional one-to-one association to Aprendiz
 	@OneToOne(fetch = FetchType.LAZY)
-	// Insertaremos la columna codaprendiz ya que es one-to-one
+	// Insertará la columna de la FK que viene de Aprendiz<
 	// Aquí tendremos que poner insertable = false y updateble = false, porque si no
 	// se insertará también en la otra tabla y dará error
 	@JoinColumn(name = "codaprendiz", insertable = false, updatable = false)

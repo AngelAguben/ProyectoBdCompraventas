@@ -30,16 +30,19 @@ public class Contratocompra implements Serializable {
 
 	// bi-directional many-to-one association to Cliente
 	@ManyToOne(fetch = FetchType.LAZY)
+	// Insertará la columna de la FK que viene de Cliente
 	@JoinColumn(name = "codcliente")
 	private Cliente cliente;
 
 	// bi-directional many-to-one association to Coche
 	@ManyToOne(fetch = FetchType.LAZY)
+	// Insertará la columna de la FK que viene de Coche
 	@JoinColumn(name = "codcoche")
 	private Coche coche;
 
 	// bi-directional many-to-one association to Trabajador
 	@ManyToOne(fetch = FetchType.LAZY)
+	// Insertará la columna de la FK que viene de Trabajador
 	@JoinColumn(name = "codtrabajador")
 	private Trabajador trabajador;
 

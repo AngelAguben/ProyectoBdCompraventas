@@ -24,6 +24,7 @@ public class Deportivo implements Serializable {
 
 	// bi-directional many-to-one association to Coche
 	@ManyToOne(fetch = FetchType.LAZY)
+	// Insertará la columna de la FK que viene de Coche
 	@JoinColumn(name = "codcoche")
 	private Coche coche;
 

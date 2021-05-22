@@ -32,8 +32,8 @@ public class PruebaControladorCoche {
 	private static void imprimirEntidades(ControladorCoche cc) {
 		System.out.println("ENTIDADES EN LA BASE DE DATOS ---------------");
 		// Imprimiremos la lista de coches
-		for (Coche c : cc.findAll()) {
-			System.out.println(c);
+		for (Coche coche : cc.findAll()) {
+			System.out.println(coche);
 		}
 	}
 
