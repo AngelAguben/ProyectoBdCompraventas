@@ -90,4 +90,11 @@ public class ControladorDeportivo {
 		this.em.close();
 		return listaDeportivo;
 	}
+
+	// Método para imprimir la lista
+	public void imprimirLista(List<Deportivo> lista) {
+		for (Deportivo depor : lista) {
+			System.out.println(depor);
+		}
+	}
 }

@@ -197,7 +197,7 @@ public class Coche implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
-		return "Coche =" + codcoche + ", cambio=" + cambio + ", color=" + color + ", combustible="
+		return "Coche =" + "codcoche="+ codcoche + ", cambio=" + cambio + ", color=" + color + ", combustible="
 				+ combustible + ", cv=" + cv + ", marca=" + marca + ", matricula=" + matricula + ", modelo=" + modelo
 				+ ", precio=" + precio + "€";
 //				", contratocompras=" + contratocompras + ", deportivos=" + deportivos + ", suvs=" + suvs + "]";

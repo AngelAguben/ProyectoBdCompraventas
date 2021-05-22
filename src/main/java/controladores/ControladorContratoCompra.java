@@ -92,4 +92,11 @@ public class ControladorContratoCompra {
 		this.em.close();
 		return listaContratocompra;
 	}
+
+	// Método para imprimir la lista
+	public void imprimirLista(List<Contratocompra> lista) {
+		for (Contratocompra contra : lista) {
+			System.out.println(contra);
+		}
+	}
 }

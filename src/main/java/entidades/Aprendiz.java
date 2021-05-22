@@ -76,8 +76,8 @@ public class Aprendiz implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
-		return "Aprendiz [codaprendiz=" + codaprendiz + ", dniapren=" + dniapren + ", nomapren=" + nomapren
-				+ ", tlfnoapren=" + tlfnoapren + ", trabajador=" + trabajador + "]";
+		return "Aprendiz = codaprendiz=" + codaprendiz + ", dniapren=" + dniapren + ", nomapren=" + nomapren
+				+ ", tlfnoapren=" + tlfnoapren + ", trabajador=" + trabajador;
 	}
 
 }

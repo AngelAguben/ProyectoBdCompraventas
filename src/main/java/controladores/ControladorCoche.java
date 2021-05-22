@@ -92,4 +92,10 @@ public class ControladorCoche {
 		return listaCoche;
 	}
 
+	// Método para imprimir la lista
+	public void imprimirLista(List<Coche> lista) {
+		for (Coche co : lista) {
+			System.out.println(co);
+		}
+	}
 }

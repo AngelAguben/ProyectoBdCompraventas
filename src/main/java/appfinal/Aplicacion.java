@@ -13,7 +13,13 @@ import controladores.ControladorContratoCompra;
 import controladores.ControladorDeportivo;
 import controladores.ControladorSuv;
 import controladores.ControladorTrabajador;
+import entidades.Aprendiz;
+import entidades.Cliente;
 import entidades.Coche;
+import entidades.Contratocompra;
+import entidades.Deportivo;
+import entidades.Suv;
+import entidades.Trabajador;
 
 public class Aplicacion {
 
@@ -21,7 +27,8 @@ public class Aplicacion {
 
 	public static void main(String[] args) {
 
-		// Metemos todos los controladores para poder trabajar con ellos en un
+		// Metemos todos los controladores para poder trabajar con ellos en la ejecución
+		// del programa
 		ControladorAprendiz cAprendiz = new ControladorAprendiz();
 		ControladorTrabajador cTrabajador = new ControladorTrabajador();
 		ControladorCliente cCliente = new ControladorCliente();
@@ -33,11 +40,18 @@ public class Aplicacion {
 		// Creamos varios int para poder trabajar con ellos al meterle el número y poder
 		// utilizarlo en los switch
 		int opcionMenu = 0, opCrear = 0, opBorrar = 0, opBuscar = 0, opMod = 0;
-		//
+		// Creo un boolean por si encuentra un fallo en los try se ponga a true y
+		// desencadenará que se ejecute otra vez el programa sin saltar ningún error,
+		// sólo un mensaje
 		boolean error = false;
-		boolean fin = false;
-		// Lista del catálogo de vehículos para poder ver cuál comprar
+		// Listas de toda la base de datos para poder mostrarlo todo en una opción
+		List<Aprendiz> catalogoAprendiz = cAprendiz.findAll();
+		List<Trabajador> catalogoTrabajador = cTrabajador.findAll();
+		List<Cliente> catalogoCliente = cCliente.findAll();
 		List<Coche> catalogoCoches = cCoche.findAll();
+		List<Deportivo> catalogoDeportivo = cDeportivo.findAll();
+		List<Suv> catalogoSuv = cSuv.findAll();
+		List<Contratocompra> catalogoContratocompra = cContratoCompra.findAll();
 
 		// El do general para controlar si error es true o false y si es true finá
 		// el programa ya que tendrá un error
@@ -51,16 +65,19 @@ public class Aplicacion {
 						error = false;
 						System.out.println("----- COMPRAVENTAS AGUBEN -----");
 						System.out.println("Lista de vehículos: ");
+						// Imprimirá el catálogo de coches para que el usuario pueda ver cual comprar
 						imprimirListaCoches(catalogoCoches);
 						System.out.println("¿Qué desea hacer? \n" + "1. Crear \n" + "2. Borrar \n" + "3. Buscar \n"
-								+ "4. Modificar \n" + "5. Salir");
+								+ "4. Modificar \n" + "5. Mostrar los datos de la base de daos \n" + "6. Salir");
 						opcionMenu = teclado.nextInt();
 						// Valores válidos entre 1-6, si no se repetirá el bucle
-					} while (opcionMenu < 1 || opcionMenu > 5);
+					} while (opcionMenu < 1 || opcionMenu > 6);
 
 					// Switch de las opciones del Menu
 					switch (opcionMenu) {
 					case 1: // CREAR
+						// do para que mientras que no decida salir del submenú no salga de la ejecución
+						// del submenu
 						do {
 							do {
 								System.out.println(
@@ -68,10 +85,11 @@ public class Aplicacion {
 												+ "3. Crear Cliente \n" + "4. Crear Coche \n" + "5. Crear Deportivo \n"
 												+ "6. Crear SUV \n" + "7. Crear ContratoCompra \n" + "8. Salir");
 								opCrear = teclado.nextInt();
+								teclado.nextLine();
 								// Valores válidos entre 1-8, si no se repetirá el bucle
 							} while (opCrear < 1 || opCrear > 8);
-
 							// Switch de las opciones de Crear
+							teclado.nextLine();
 							switch (opCrear) {
 							// CASOS
 							case 1: // Aprendiz
@@ -93,16 +111,19 @@ public class Aplicacion {
 								cSuv.createSuv(ClaseCrear.insertarDatosSuv());
 								break;
 							case 7: // ContratoCompra
-//								cContratoCompra.createContratoCompra(ClaseCrear.insertarDatosContratoCompra());
+								cContratoCompra.createContratocompra(ClaseCrear.insertarDatosContratoCompra());
 								break;
 							case 8: // SALIR
 								System.out.println("Saliendo del menu");
 								break;
 							}
+							// Terminará cuando la variable sea 8
 						} while (opCrear != 8);
 						break;
 
 					case 2: // BORRAR
+						// do para que mientras que no decida salir del submenú no salga de la ejecución
+						// del submenu
 						do {
 							do {
 								System.out.println("¿Qué desea borrar? \n" + "1. Borrar Aprendiz \n"
@@ -137,16 +158,19 @@ public class Aplicacion {
 								cSuv.borrarSuv(cSuv.findByPK(teclado.nextInt()));
 								break;
 							case 7: // ContratoCompra
-//								cContratoCompra.createContratoCompra(ClaseCrear.insertarDatosContratoCompra());
+								cContratoCompra.borrarContratocompra(ClaseCrear.insertarDatosContratoCompra());
 								break;
 							case 8: // SALIR
 								System.out.println("Saliendo del menu");
 								break;
 							}
+							// Terminará cuando la variable sea 8
 						} while (opBorrar != 8);
 						break;
 
 					case 3: // BUSCAR
+						// do para que mientras que no decida salir del submenú no salga de la ejecución
+						// del submenu
 						do {
 							do {
 								System.out.println("¿Qué desea buscar? \n" + "1. Buscar Aprendiz \n"
@@ -181,16 +205,19 @@ public class Aplicacion {
 								cSuv.findByPK(teclado.nextInt());
 								break;
 							case 7: // ContratoCompra
-//								cContratoCompra.createContratoCompra(ClaseCrear.insertarDatosContratoCompra());
+								cContratoCompra.findByPK(teclado.nextInt());
 								break;
 							case 8: // SALIR
 								System.out.println("Saliendo del menu");
 								break;
 							}
+							// Terminará cuando la variable sea 8
 						} while (opBuscar != 8);
 						break;
 
 					case 4: // MODIFICAR
+						// do para que mientras que no decida salir del submenú no salga de la ejecución
+						// del submenu
 						do {
 							do {
 								System.out.println("¿Qué desea modificar? \n" + "1. Modificar Aprendiz \n"
@@ -231,12 +258,23 @@ public class Aplicacion {
 								System.out.println("Saliendo del menu");
 								break;
 							}
+							// Terminará cuando la variable sea 8
 						} while (opMod != 8);
 						break;
-
-					case 5: // SALIR
+					case 5:
+						System.out.println("MOSTRAR LOS DATOS DE LA BASE DE DATOS");
+						
+						cAprendiz.imprimirLista(catalogoAprendiz);
+						cTrabajador.imprimirLista(catalogoTrabajador);
+						cCliente.imprimirLista(catalogoCliente);
+						cCoche.imprimirLista(catalogoCoches);
+						cDeportivo.imprimirLista(catalogoDeportivo);
+						cSuv.imprimirLista(catalogoSuv);
+						cContratoCompra.imprimirLista(catalogoContratocompra);
+						
+						break;
+					case 6: // SALIR
 						System.out.println("Saliendo del programa...");
-						fin = true;
 						break;
 					}
 
@@ -262,12 +300,12 @@ public class Aplicacion {
 			// ya que si hay un error de una excepción anterior se pondrá a true la
 			// variable error y si fin es false significará que no ha seleccionado
 			// la opción de salir
-		} while (error == true || opcionMenu != 5);
-//		fin = true;
+		} while (error == true || opcionMenu != 6);
 		// Muestro por pantalla para saber cuando termina el programa
 		System.out.println("----- LA EJECUCIÓN DEL PROGRAMA HA TERMINADO -----");
 	}
 
+	// Método para imprimir los vehículos de manera más visual
 	private static void imprimirListaCoches(List<Coche> listaVehiculos) {
 		for (Coche vehiculo : listaVehiculos) {
 			System.out.println("\tMatricula: " + vehiculo.getMatricula() + "\tMarca : " + vehiculo.getMarca()

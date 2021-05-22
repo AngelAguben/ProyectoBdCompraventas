@@ -91,5 +91,11 @@ public class ControladorTrabajador {
 		this.em.close();
 		return listaTrabajador;
 	}
-
+	
+	// Método para imprimir la lista
+	public void imprimirLista(List<Trabajador> lista) {
+		for (Trabajador trab : lista) {
+			System.out.println(trab);
+		}
+	}
 }

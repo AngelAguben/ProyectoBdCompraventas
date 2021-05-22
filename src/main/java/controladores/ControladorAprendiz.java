@@ -92,4 +92,12 @@ public class ControladorAprendiz {
 		return listaAprendiz;
 	}
 
+	// Método para imprimir la lista
+	public void imprimirLista(List<Aprendiz> lista) {
+		for (Aprendiz apren : lista) {
+			System.out.println(apren);
+		}
+	}
+
+
 }

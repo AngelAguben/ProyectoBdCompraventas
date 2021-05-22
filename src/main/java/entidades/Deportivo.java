@@ -68,7 +68,6 @@ public class Deportivo implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
-		return "Deportivo [coddepor=" + coddepor + ", packaero=" + packaero + ", turbo=" + turbo + ", coche=" + coche
-				+ "]";
+		return "Deportivo = coddepor=" + coddepor + ", packaero=" + packaero + ", turbo=" + turbo + ", coche=" + coche;
 	}
 }

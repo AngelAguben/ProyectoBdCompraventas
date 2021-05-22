@@ -90,4 +90,11 @@ public class ControladorSuv {
 		this.em.close();
 		return listaSuv;
 	}
+
+	// Método para imprimir la lista
+	public void imprimirLista(List<Suv> lista) {
+		for (Suv suv : lista) {
+			System.out.println(suv);
+		}
+	}
 }

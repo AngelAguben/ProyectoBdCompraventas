@@ -92,4 +92,10 @@ public class ControladorCliente {
 		return listaCliente;
 	}
 
+	// Método para imprimir la lista
+	public void imprimirLista(List<Cliente> lista) {
+		for (Cliente cli : lista) {
+			System.out.println(cli);
+		}
+	}
 }

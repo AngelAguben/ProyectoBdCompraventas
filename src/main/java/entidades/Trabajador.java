@@ -119,8 +119,8 @@ public class Trabajador implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
-		return "Trabajador [codtrabajador=" + codtrabajador + ", dnitrab=" + dnitrab + ", horario=" + horario
-				+ ", nomtrab=" + nomtrab + ", tlfnotrab=" + tlfnotrab + "]";
+		return "Trabajador = codtrabajador=" + codtrabajador + ", dnitrab=" + dnitrab + ", horario=" + horario
+				+ ", nomtrab=" + nomtrab + ", tlfnotrab=" + tlfnotrab;
 	}
 
 }

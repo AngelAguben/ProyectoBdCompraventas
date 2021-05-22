@@ -58,7 +58,7 @@ public class Suv implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
-		return "Suv [codsuv=" + codsuv + ", plazas=" + plazas + ", coche=" + coche + "]";
+		return "Suv = codsuv=" + codsuv + ", plazas=" + plazas + ", coche=" + coche;
 	}
 
 }

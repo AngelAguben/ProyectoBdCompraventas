@@ -132,9 +132,9 @@ public class Cliente implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
-		return "Cliente [ape1clien=" + ape1clien + ", ape2clien=" + ape2clien + ", codcliente=" + codcliente
-				+ ", contraclien=" + contraclien + ", correoclien=" + correoclien + ", nomclien=" + nomclien
-				+ ", tlfnoclien=" + tlfnoclien + ", usuclien=" + usuclien + "]";
+		return "Cliente = codcliente=" + codcliente + ", nomclien=" + nomclien + ", ape1clien=" + ape1clien
+				+ ", ape2clien=" + ape2clien + ", contraclien=" + contraclien + ", correoclien=" + correoclien
+				+ ", tlfnoclien=" + tlfnoclien + ", usuclien=" + usuclien;
 	}
 
 }

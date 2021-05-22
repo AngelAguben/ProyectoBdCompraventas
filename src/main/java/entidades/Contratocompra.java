@@ -102,8 +102,8 @@ public class Contratocompra implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
-		return "Contratocompra [codcontracompra=" + codcontracompra + ", fechaventa=" + fechaventa + ", precioventa="
-				+ precioventa + ", cliente=" + cliente + ", coche=" + coche + ", trabajador=" + trabajador + "]";
+		return "Contratocompra = codcontracompra=" + codcontracompra + ", fechaventa=" + fechaventa + ", precioventa="
+				+ precioventa + ", cliente=" + cliente + ", coche=" + coche + ", trabajador=" + trabajador;
 	}
 
 }
