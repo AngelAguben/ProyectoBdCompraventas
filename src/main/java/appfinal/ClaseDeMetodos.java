@@ -2,11 +2,7 @@ package appfinal;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.Month;
-import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import javax.persistence.NoResultException;
 
 import controladores.ControladorAprendiz;
 import controladores.ControladorCliente;
@@ -23,7 +19,10 @@ import entidades.Deportivo;
 import entidades.Suv;
 import entidades.Trabajador;
 
-public class ClaseCrear {
+public class ClaseDeMetodos {
+	// Variable necesaria para la modificación de datos
+	private static int numero;
+	// Variable de datos necesaria para la petición de los datos
 	private static Scanner teclado = new Scanner(System.in);
 
 	// Método para insertar los datos de Aprendiz
@@ -49,15 +48,32 @@ public class ClaseCrear {
 		return aprendiz;
 	}
 
+	// Método para la moficación de datos de Aprendiz
+	public static void modificarAprendiz() {
+		// Creamos un controlador y un numero y luego pediremos el codigo del objeto y
+		// crearemos un objeto vacio
+		ControladorAprendiz cAprendiz = new ControladorAprendiz();
+		int numero = 0;
+		System.out.println("Introduzca el código a modificar: ");
+		numero = teclado.nextInt();
+		Aprendiz apren = new Aprendiz();
+
+		// Y luego insertaremos los datos, le asignaremos el código y pasaremos el
+		// objeto a modificar
+		apren = ClaseDeMetodos.insertarDatosAprendiz();
+		apren.setCodaprendiz(numero);
+		cAprendiz.modifyAprendiz(apren);
+	}
+
 	// Método para insertar los datos de Trabajador
 	public static Trabajador insertarDatosTrabajador() {
 		// Creamos un nuevo trabajador para insertarle los datos necesarios para después
 		// pasarlo por los métodos
 		Trabajador trabajador = new Trabajador();
 
-		System.out.println("Trabajador");
-//		System.out.println("Enter para continuar");
-//		teclado.nextLine();
+		System.out.println("TRABAJADOR");
+		System.out.println("Enter para continuar");
+		teclado.nextLine();
 		System.out.println("Nombre");
 		trabajador.setNomtrab(teclado.nextLine());
 		System.out.println("Dni");
@@ -70,6 +86,22 @@ public class ClaseCrear {
 		return trabajador;
 	}
 
+	// Método para la moficación de datos de Trabajador
+	public static void modificarTrabajador() {
+		// Creamos un controlador y un numero y luego pediremos el codigo del objeto y
+		// crearemos un objeto vacio
+		ControladorTrabajador cTrabajador = new ControladorTrabajador();
+		System.out.println("Introduzca el código a modificar: ");
+		numero = teclado.nextInt();
+		Trabajador trab = new Trabajador();
+
+		// Y luego insertaremos los datos, le asignaremos el código y pasaremos el
+		// objeto a modificar
+		trab = ClaseDeMetodos.insertarDatosTrabajador();
+		trab.setCodtrabajador(numero);
+		cTrabajador.modifyTrabajador(trab);
+	}
+
 	// Método para insertar los datos de Cliente
 	public static Cliente insertarDatosCliente() {
 		// Creamos un nuevo Cliente para insertarle los datos necesarios para después
@@ -77,6 +109,8 @@ public class ClaseCrear {
 		Cliente cliente = new Cliente();
 
 		System.out.println("CLIENTE");
+		System.out.println("Enter para continuar");
+		teclado.nextLine();
 		System.out.println("Nombre");
 		cliente.setNomclien(teclado.nextLine());
 		System.out.println("Apellido 1");
@@ -95,6 +129,23 @@ public class ClaseCrear {
 		return cliente;
 	}
 
+	// Método para la moficación de datos de Cliente
+	public static void modificarCliente() {
+		// Creamos un controlador y un numero y luego pediremos el codigo del objeto y
+		// crearemos un objeto vacio
+		ControladorCliente cCliente = new ControladorCliente();
+		int numero = 0;
+		System.out.println("Introduzca el código a modificar: ");
+		numero = teclado.nextInt();
+		Cliente cli = new Cliente();
+
+		// Y luego insertaremos los datos, le asignaremos el código y pasaremos el
+		// objeto a modificar
+		cli = ClaseDeMetodos.insertarDatosCliente();
+		cli.setCodcliente(numero);
+		cCliente.modifyCliente(cli);
+	}
+
 	// Método para insertar los datos de Coche
 	public static Coche insertarDatosCoche() {
 		// Creamos un nuevo coche para insertarle los datos necesarios para después
@@ -104,6 +155,8 @@ public class ClaseCrear {
 		String textoRespu = "";
 
 		System.out.println("COCHE");
+		System.out.println("Enter para continuar");
+		teclado.nextLine();
 		System.out.println("Matricula");
 		coche.setMatricula(teclado.nextLine());
 		do {
@@ -133,6 +186,23 @@ public class ClaseCrear {
 		return coche;
 	}
 
+	// Método para la moficación de datos de Coche
+	public static void modificarCoche() {
+		// Creamos un controlador y un numero y luego pediremos el codigo del objeto y
+		// crearemos un objeto vacio
+		ControladorCoche cCoche = new ControladorCoche();
+		int numero = 0;
+		System.out.println("Introduzca el código a modificar: ");
+		numero = teclado.nextInt();
+		Coche coche = new Coche();
+
+		// Y luego insertaremos los datos, le asignaremos el código y pasaremos el
+		// objeto a modificar
+		coche = ClaseDeMetodos.insertarDatosCoche();
+		coche.setCodcoche(numero);
+		cCoche.modifyCoche(coche);
+	}
+
 	// Método para insertar los datos de Deportivo
 	public static Deportivo insertarDatosDeportivo() {
 		// Se crea un nuevo controlador para poder trabajar con el
@@ -146,8 +216,11 @@ public class ClaseCrear {
 		String textoRespu = "";
 
 		System.out.println("DEPORTIVO");
+		System.out.println("Enter para continuar");
+		teclado.nextLine();
 		System.out.println("Dígame el código del coche");
 		depor.setCoche(cc.findByPK(teclado.nextInt()));
+		teclado.nextLine();
 
 		do {
 			System.out.println("¿El vehículo monta pack aero? (si/no)");
@@ -182,6 +255,23 @@ public class ClaseCrear {
 		return depor;
 	}
 
+	// Método para la moficación de datos de Deportivo
+	public static void modificarDeportivo() {
+		// Creamos un controlador y un numero y luego pediremos el codigo del objeto y
+		// crearemos un objeto vacio
+		ControladorDeportivo cDeportivo = new ControladorDeportivo();
+		int numero = 0;
+		System.out.println("Introduzca el código a modificar: ");
+		numero = teclado.nextInt();
+		Deportivo depor = new Deportivo();
+
+		// Y luego insertaremos los datos, le asignaremos el código y pasaremos el
+		// objeto a modificar
+		depor = ClaseDeMetodos.insertarDatosDeportivo();
+		depor.setCoddepor(numero);
+		cDeportivo.modifyDeportivo(depor);
+	}
+
 	// Método para insertar los datos de Suv
 	public static Suv insertarDatosSuv() {
 		// Se crea controlador de Coche para su uso como fk
@@ -193,8 +283,11 @@ public class ClaseCrear {
 		int respu = 0;
 
 		System.out.println("SUV");
+		System.out.println("Enter para continuar");
+		teclado.nextLine();
 		System.out.println("Dígame el código del coche");
 		suv.setCoche(cc.findByPK(teclado.nextInt()));
+		teclado.nextLine();
 		System.out.println("¿Cúantas plazas tiene el vehículo?");
 		// Repite mientras que el numero de plazas sea menor a 1 o mayor a 10
 		do {
@@ -204,6 +297,24 @@ public class ClaseCrear {
 		return suv;
 	}
 
+	// Método para la moficación de datos de Suv
+	public static void modificarSuv() {
+		// Creamos un controlador y un numero y luego pediremos el codigo del objeto y
+		// crearemos un objeto vacio
+		ControladorSuv cSuv = new ControladorSuv();
+		int numero = 0;
+		System.out.println("Introduzca el código a modificar: ");
+		numero = teclado.nextInt();
+		Suv suv = new Suv();
+
+		// Y luego insertaremos los datos, le asignaremos el código y pasaremos el
+		// objeto a modificar
+		suv = ClaseDeMetodos.insertarDatosSuv();
+		suv.setCodsuv(numero);
+		cSuv.modifySuv(suv);
+	}
+
+	// Método para insertar los datos de ContratoCompra
 	public static Contratocompra insertarDatosContratoCompra() {
 		// Se crean controladores para su uso como fk
 		ControladorTrabajador ct = new ControladorTrabajador();
@@ -219,6 +330,8 @@ public class ClaseCrear {
 		Contratocompra contrato = new Contratocompra();
 
 		System.out.println("CONTRATO DE COMPRA");
+		System.out.println("Enter para continuar");
+		teclado.nextLine();
 		System.out.println("Dígame el código del cliente");
 		contrato.setCliente(cCliente.findByPK(teclado.nextInt()));
 		System.out.println("Dígame el código del coche");
@@ -235,6 +348,23 @@ public class ClaseCrear {
 		System.out.println("Dígame el precio al que se vendió");
 		contrato.setPrecioventa(teclado.nextDouble());
 		return contrato;
+	}
+
+	// Método para la moficación de datos de ContratoCompra
+	public static void modificarContratoCompra() {
+		// Creamos un controlador y un numero y luego pediremos el codigo del objeto y
+		// crearemos un objeto vacio
+		ControladorContratoCompra cContratoCompra = new ControladorContratoCompra();
+		int numero = 0;
+		System.out.println("Introduzca el código a modificar: ");
+		numero = teclado.nextInt();
+		Contratocompra contrato = new Contratocompra();
+
+		// Y luego insertaremos los datos, le asignaremos el código y pasaremos el
+		// objeto a modificar
+		contrato = ClaseDeMetodos.insertarDatosContratoCompra();
+		contrato.setCodcontracompra(numero);
+		cContratoCompra.modifyContratocompra(contrato);
 	}
 
 }

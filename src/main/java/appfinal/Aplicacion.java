@@ -89,29 +89,45 @@ public class Aplicacion {
 								// Valores válidos entre 1-8, si no se repetirá el bucle
 							} while (opCrear < 1 || opCrear > 8);
 							// Switch de las opciones de Crear
-							teclado.nextLine();
 							switch (opCrear) {
 							// CASOS
 							case 1: // Aprendiz
-								cAprendiz.createAprendiz(ClaseCrear.insertarDatosAprendiz());
+								cAprendiz.createAprendiz(ClaseDeMetodos.insertarDatosAprendiz());
 								break;
 							case 2: // Trabajador
-								cTrabajador.createTrabajador(ClaseCrear.insertarDatosTrabajador());
+								cTrabajador.createTrabajador(ClaseDeMetodos.insertarDatosTrabajador());
 								break;
 							case 3: // Cliente
-								cCliente.createCliente(ClaseCrear.insertarDatosCliente());
+								cCliente.createCliente(ClaseDeMetodos.insertarDatosCliente());
 								break;
 							case 4: // Coche
-								cCoche.createCoche(ClaseCrear.insertarDatosCoche());
+								cCoche.createCoche(ClaseDeMetodos.insertarDatosCoche());
 								break;
 							case 5: // Deportivo
-								cDeportivo.createDeportivo(ClaseCrear.insertarDatosDeportivo());
+								System.out.println("--- COCHES ---");
+								cCoche.imprimirLista(catalogoCoches);
+								System.out.println();
+								cDeportivo.createDeportivo(ClaseDeMetodos.insertarDatosDeportivo());
 								break;
 							case 6: // Suv
-								cSuv.createSuv(ClaseCrear.insertarDatosSuv());
+								System.out.println("--- COCHES ---");
+								cCoche.imprimirLista(catalogoCoches);
+								System.out.println();
+								cSuv.createSuv(ClaseDeMetodos.insertarDatosSuv());
 								break;
 							case 7: // ContratoCompra
-								cContratoCompra.createContratocompra(ClaseCrear.insertarDatosContratoCompra());
+								System.out.println("--- TRABAJADOR ---");
+								cTrabajador.imprimirLista(catalogoTrabajador);
+								System.out.println();
+
+								System.out.println("--- CLIENTE ---");
+								cCliente.imprimirLista(catalogoCliente);
+								System.out.println();
+
+								System.out.println("--- COCHES ---");
+								cCoche.imprimirLista(catalogoCoches);
+								System.out.println();
+								cContratoCompra.createContratocompra(ClaseDeMetodos.insertarDatosContratoCompra());
 								break;
 							case 8: // SALIR
 								System.out.println("Saliendo del menu");
@@ -140,25 +156,46 @@ public class Aplicacion {
 							switch (opBorrar) {
 							// CASOS
 							case 1: // Aprendiz
+								System.out.println("--- APRENDIZ ---");
+								cAprendiz.imprimirLista(catalogoAprendiz);
+								System.out.println();
 								cAprendiz.borrarAprendiz(cAprendiz.findByPK(teclado.nextInt()));
 								break;
 							case 2: // Trabajador
+								System.out.println("--- TRABAJADOR ---");
+								cTrabajador.imprimirLista(catalogoTrabajador);
+								System.out.println();
 								cTrabajador.borrarTrabajador(cTrabajador.findByPK(teclado.nextInt()));
 								break;
 							case 3: // Cliente
+								System.out.println("--- CLIENTE ---");
+								cCliente.imprimirLista(catalogoCliente);
+								System.out.println();
 								cCliente.borrarCliente(cCliente.findByPK(teclado.nextInt()));
 								break;
 							case 4: // Coche
+								System.out.println("--- COCHES ---");
+								cCoche.imprimirLista(catalogoCoches);
+								System.out.println();
 								cCoche.borrarCoche(cCoche.findByPK(teclado.nextInt()));
 								break;
 							case 5: // Deportivo
+								System.out.println("--- DEPORTIVO ---");
+								cDeportivo.imprimirLista(catalogoDeportivo);
+								System.out.println();
 								cDeportivo.borrarDeportivo(cDeportivo.findByPK(teclado.nextInt()));
 								break;
 							case 6: // Suv
+								System.out.println("--- SUV ---");
+								cSuv.imprimirLista(catalogoSuv);
+								System.out.println();
 								cSuv.borrarSuv(cSuv.findByPK(teclado.nextInt()));
 								break;
 							case 7: // ContratoCompra
-								cContratoCompra.borrarContratocompra(ClaseCrear.insertarDatosContratoCompra());
+								System.out.println("--- CONTRATO COMPRAR ---");
+								cContratoCompra.imprimirLista(catalogoContratocompra);
+								System.out.println();
+								cContratoCompra.borrarContratocompra(ClaseDeMetodos.insertarDatosContratoCompra());
 								break;
 							case 8: // SALIR
 								System.out.println("Saliendo del menu");
@@ -187,25 +224,25 @@ public class Aplicacion {
 							switch (opBuscar) {
 							// CASOS
 							case 1: // Aprendiz
-								cAprendiz.findByPK(teclado.nextInt());
+								System.out.println(cAprendiz.findByPK(teclado.nextInt()));
 								break;
 							case 2: // Trabajador
-								cTrabajador.findByPK(teclado.nextInt());
+								System.out.println(cTrabajador.findByPK(teclado.nextInt()));
 								break;
 							case 3: // Cliente
-								cCliente.findByPK(teclado.nextInt());
+								System.out.println(cCliente.findByPK(teclado.nextInt()));
 								break;
 							case 4: // Coche
-								cCoche.findByPK(teclado.nextInt());
+								System.out.println(cCoche.findByPK(teclado.nextInt()));
 								break;
 							case 5: // Deportivo
-								cDeportivo.findByPK(teclado.nextInt());
+								System.out.println(cDeportivo.findByPK(teclado.nextInt()));
 								break;
 							case 6: // Suv
-								cSuv.findByPK(teclado.nextInt());
+								System.out.println(cSuv.findByPK(teclado.nextInt()));
 								break;
 							case 7: // ContratoCompra
-								cContratoCompra.findByPK(teclado.nextInt());
+								System.out.println(cContratoCompra.findByPK(teclado.nextInt()));
 								break;
 							case 8: // SALIR
 								System.out.println("Saliendo del menu");
@@ -229,30 +266,49 @@ public class Aplicacion {
 							} while (opMod < 1 || opMod > 8);
 
 							System.out.println("--- MODIFICAR ---");
-							System.out.println("Introduzca el código a modificar: ");
 							// Switch de las opciones de Modificar
 							switch (opMod) {
 							// CASOS
 							case 1: // Aprendiz
-								cAprendiz.modifyAprendiz(ClaseCrear.insertarDatosAprendiz());
+								System.out.println("--- APRENDIZ ---");
+								cAprendiz.imprimirLista(catalogoAprendiz);
+								ClaseDeMetodos.modificarAprendiz();
 								break;
 							case 2: // Trabajador
-								cTrabajador.modifyTrabajador(ClaseCrear.insertarDatosTrabajador());
+								System.out.println();
+								System.out.println("--- TRABAJADOR ---");
+								cTrabajador.imprimirLista(catalogoTrabajador);
+								ClaseDeMetodos.modificarTrabajador();
 								break;
 							case 3: // Cliente
-								cCliente.modifyCliente(ClaseCrear.insertarDatosCliente());
+								System.out.println();
+								System.out.println("--- CLIENTE ---");
+								cCliente.imprimirLista(catalogoCliente);
+								ClaseDeMetodos.modificarCliente();
 								break;
 							case 4: // Coche
-								cCoche.modifyCoche(ClaseCrear.insertarDatosCoche());
+								System.out.println();
+								System.out.println("--- COCHES ---");
+								cCoche.imprimirLista(catalogoCoches);
+								ClaseDeMetodos.modificarCoche();
 								break;
 							case 5: // Deportivo
-								cDeportivo.modifyDeportivo(ClaseCrear.insertarDatosDeportivo());
+								System.out.println();
+								System.out.println("--- DEPORTIVO ---");
+								cDeportivo.imprimirLista(catalogoDeportivo);
+								ClaseDeMetodos.modificarDeportivo();
 								break;
 							case 6: // Suv
-								cSuv.modifySuv(ClaseCrear.insertarDatosSuv());
+								System.out.println();
+								System.out.println("--- SUV ---");
+								cSuv.imprimirLista(catalogoSuv);
+								ClaseDeMetodos.modificarSuv();
 								break;
 							case 7: // ContratoCompra
-//							cContratoCompra.createContratoCompra(ClaseCrear.insertarDatosContratoCompra());
+								System.out.println();
+								System.out.println("--- CONTRATO COMPRAR ---");
+								cContratoCompra.imprimirLista(catalogoContratocompra);
+								ClaseDeMetodos.modificarContratoCompra();
 								break;
 							case 8: // SALIR
 								System.out.println("Saliendo del menu");
@@ -261,18 +317,39 @@ public class Aplicacion {
 							// Terminará cuando la variable sea 8
 						} while (opMod != 8);
 						break;
+
 					case 5:
 						System.out.println("MOSTRAR LOS DATOS DE LA BASE DE DATOS");
-						
+
+						// Imprimiremos todas las listas de la base de datos
+						System.out.println("--- APRENDIZ ---");
 						cAprendiz.imprimirLista(catalogoAprendiz);
+						System.out.println();
+
+						System.out.println("--- TRABAJADOR ---");
 						cTrabajador.imprimirLista(catalogoTrabajador);
+						System.out.println();
+
+						System.out.println("--- CLIENTE ---");
 						cCliente.imprimirLista(catalogoCliente);
+						System.out.println();
+
+						System.out.println("--- COCHES ---");
 						cCoche.imprimirLista(catalogoCoches);
+						System.out.println();
+
+						System.out.println("--- DEPORTIVO ---");
 						cDeportivo.imprimirLista(catalogoDeportivo);
+						System.out.println();
+
+						System.out.println("--- SUV ---");
 						cSuv.imprimirLista(catalogoSuv);
+						System.out.println();
+
+						System.out.println("--- CONTRATO COMPRAR ---");
 						cContratoCompra.imprimirLista(catalogoContratocompra);
-						
 						break;
+
 					case 6: // SALIR
 						System.out.println("Saliendo del programa...");
 						break;
@@ -286,13 +363,13 @@ public class Aplicacion {
 					// Y limpiamos el búffer
 					teclado.nextLine();
 				}
-				// Control del error de que espera un valor como un int y le insertamos un
-				// String
+				// Control del error de que espera un valor como por ejemplo un int y le
+				// insertamos un String
 			} catch (InputMismatchException ime) {
 				System.out.println("VALOR IRRECONOCIBLE");
 				// La variable error la ponemos a true
 				error = true;
-				// Y limpiamos el búffer
+//				// Y limpiamos el búffer
 				teclado.nextLine();
 			}
 
