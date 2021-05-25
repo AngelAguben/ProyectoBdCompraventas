@@ -23,7 +23,7 @@ public class PruebaControladorCoche {
 		c1.setPrecio(3000);
 
 		// Y luego se crea y se vuelve a imprimir la lista
-		cc.createCoche(c1);
+		cc.createEntidad(c1);
 		imprimirEntidades(cc);
 
 	}

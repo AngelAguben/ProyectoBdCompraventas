@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+<persistence version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="ProyectoCompraventa">
-		<class>entidades.Aprendiz</class>
-		<class>entidades.Cliente</class>
-		<class>entidades.Coche</class>
-		<class>entidades.Contratocompra</class>
-		<class>entidades.Deportivo</class>
-		<class>entidades.Suv</class>
-		<class>entidades.Trabajador</class>
-	
-	<properties>
-            <property name="javax.persistence.jdbc.url"
-	value="jdbc:mysql://localhost:3306/bd_prog_compraventa?serverTimezone=Europe/Madrid" />
-	<property name="javax.persistence.jdbc.user" value="root" />
-	<property name="javax.persistence.jdbc.driver"
-		value="com.mysql.cj.jdbc.Driver" />
-	<property name="javax.persistence.jdbc.password" value="" />
-        </properties>
+<!-- 		<class>entidades.Aprendiz</class> -->
+<!-- 		<class>entidades.Cliente</class> -->
+<!-- 		<class>entidades.Coche</class> -->
+<!-- 		<class>entidades.Contratocompra</class> -->
+<!-- 		<class>entidades.Deportivo</class> -->
+<!-- 		<class>entidades.Suv</class> -->
+<!-- 		<class>entidades.Trabajador</class> -->
+
+<!-- 		<properties> -->
+<!-- 		<property name="javax.persistence.jdbc.url" -->
+<!-- 		value="jdbc:mysql://localhost:3306/bd_prog_compraventa?serverTimezone=Europe/Madrid" /> -->
+<!-- 		<property name="javax.persistence.jdbc.user" value="root" /> -->
+<!-- 		<property name="javax.persistence.jdbc.driver" -->
+<!-- 		value="com.mysql.cj.jdbc.Driver" /> -->
+<!-- 		<property name="javax.persistence.jdbc.password" value="" /> -->
+<!-- 		</properties> -->
+
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://192.168.56.101:3306/bd_prog_compraventa?serverTimezone=Europe/Madrid" />
+			<property name="javax.persistence.jdbc.user" value="angel" />
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.password"
+				value="estucherojo2." />
+		</properties>
 	</persistence-unit>
 </persistence>

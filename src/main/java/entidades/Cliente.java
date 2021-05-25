@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 //Especificamos la NamedQuery para que funcione
 @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
-public class Cliente implements Serializable {
+public class Cliente extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String ape1clien;

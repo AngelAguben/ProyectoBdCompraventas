@@ -21,7 +21,7 @@ public class PruebaControladorSuv {
 		s1.setPlazas(5);
 
 		// Y luego se crea y se vuelve a imprimir la lista
-		cs.createSuv(s1);
+		cs.createEntidad(s1);
 		imprimirEntidades(cs);
 
 	}

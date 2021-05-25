@@ -62,7 +62,7 @@ public class ClaseDeMetodos {
 		// objeto a modificar
 		apren = ClaseDeMetodos.insertarDatosAprendiz();
 		apren.setCodaprendiz(numero);
-		cAprendiz.modifyAprendiz(apren);
+		cAprendiz.modifyEntidad(apren);
 	}
 
 	// Método para insertar los datos de Trabajador
@@ -99,7 +99,7 @@ public class ClaseDeMetodos {
 		// objeto a modificar
 		trab = ClaseDeMetodos.insertarDatosTrabajador();
 		trab.setCodtrabajador(numero);
-		cTrabajador.modifyTrabajador(trab);
+		cTrabajador.modifyEntidad(trab);
 	}
 
 	// Método para insertar los datos de Cliente
@@ -143,7 +143,7 @@ public class ClaseDeMetodos {
 		// objeto a modificar
 		cli = ClaseDeMetodos.insertarDatosCliente();
 		cli.setCodcliente(numero);
-		cCliente.modifyCliente(cli);
+		cCliente.modifyEntidad(cli);
 	}
 
 	// Método para insertar los datos de Coche
@@ -200,7 +200,7 @@ public class ClaseDeMetodos {
 		// objeto a modificar
 		coche = ClaseDeMetodos.insertarDatosCoche();
 		coche.setCodcoche(numero);
-		cCoche.modifyCoche(coche);
+		cCoche.modifyEntidad(coche);
 	}
 
 	// Método para insertar los datos de Deportivo
@@ -269,7 +269,7 @@ public class ClaseDeMetodos {
 		// objeto a modificar
 		depor = ClaseDeMetodos.insertarDatosDeportivo();
 		depor.setCoddepor(numero);
-		cDeportivo.modifyDeportivo(depor);
+		cDeportivo.modifyEntidad(depor);
 	}
 
 	// Método para insertar los datos de Suv
@@ -311,7 +311,7 @@ public class ClaseDeMetodos {
 		// objeto a modificar
 		suv = ClaseDeMetodos.insertarDatosSuv();
 		suv.setCodsuv(numero);
-		cSuv.modifySuv(suv);
+		cSuv.modifyEntidad(suv);
 	}
 
 	// Método para insertar los datos de ContratoCompra
@@ -364,7 +364,7 @@ public class ClaseDeMetodos {
 		// objeto a modificar
 		contrato = ClaseDeMetodos.insertarDatosContratoCompra();
 		contrato.setCodcontracompra(numero);
-		cContratoCompra.modifyContratocompra(contrato);
+		cContratoCompra.modifyEntidad(contrato);
 	}
 
 }

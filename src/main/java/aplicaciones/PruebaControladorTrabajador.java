@@ -19,7 +19,7 @@ public class PruebaControladorTrabajador {
 		t1.setTlfnotrab("695847384");
 
 		// Y luego se crea y se vuelve a imprimir la lista
-		ct.createTrabajador(t1);
+		ct.createEntidad(t1);
 		imprimirEntidades(ct);
 
 	}

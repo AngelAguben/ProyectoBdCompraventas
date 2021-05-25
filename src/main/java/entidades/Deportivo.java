@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 //Especificamos la NamedQuery para que funcione
 @NamedQuery(name = "Deportivo.findAll", query = "SELECT d FROM Deportivo d")
-public class Deportivo implements Serializable {
+public class Deportivo extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	// Definimos después de @Id cual será la id de la tabla

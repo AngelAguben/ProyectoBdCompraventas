@@ -22,7 +22,7 @@ public class PruebaControladorDeportivo {
 		d1.setTurbo(true);
 
 		// Y luego se crea y se vuelve a imprimir la lista
-		cd.createDeportivo(d1);
+		cd.createEntidad(d1);
 		imprimirEntidades(cd);
 
 	}

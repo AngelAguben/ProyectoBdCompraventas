@@ -23,7 +23,7 @@ public class PruebaControladorAprendiz {
 		a1.setTrabajador(ct.findByPK(1));
 
 		// Y luego se crea y se vuelve a imprimir la lista
-		ca.createAprendiz(a1);
+		ca.createEntidad(a1);
 		imprimirEntidades(ca);
 
 	}

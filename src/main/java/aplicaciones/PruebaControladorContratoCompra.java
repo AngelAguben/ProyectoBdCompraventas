@@ -33,7 +33,7 @@ public class PruebaControladorContratoCompra {
 		contrato.setPrecioventa(5000);
 
 		// Y luego se crea y se vuelve a imprimir la lista
-		ccc.createContratocompra(contrato);
+		ccc.createEntidad(contrato);
 		imprimirEntidades(ccc);
 
 	}

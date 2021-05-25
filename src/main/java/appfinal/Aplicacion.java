@@ -92,28 +92,28 @@ public class Aplicacion {
 							switch (opCrear) {
 							// CASOS
 							case 1: // Aprendiz
-								cAprendiz.createAprendiz(ClaseDeMetodos.insertarDatosAprendiz());
+								cAprendiz.createEntidad(ClaseDeMetodos.insertarDatosAprendiz());
 								break;
 							case 2: // Trabajador
-								cTrabajador.createTrabajador(ClaseDeMetodos.insertarDatosTrabajador());
+								cTrabajador.createEntidad(ClaseDeMetodos.insertarDatosTrabajador());
 								break;
 							case 3: // Cliente
-								cCliente.createCliente(ClaseDeMetodos.insertarDatosCliente());
+								cCliente.createEntidad(ClaseDeMetodos.insertarDatosCliente());
 								break;
 							case 4: // Coche
-								cCoche.createCoche(ClaseDeMetodos.insertarDatosCoche());
+								cCoche.createEntidad(ClaseDeMetodos.insertarDatosCoche());
 								break;
 							case 5: // Deportivo
 								System.out.println("--- COCHES ---");
 								cCoche.imprimirLista(catalogoCoches);
 								System.out.println();
-								cDeportivo.createDeportivo(ClaseDeMetodos.insertarDatosDeportivo());
+								cDeportivo.createEntidad(ClaseDeMetodos.insertarDatosDeportivo());
 								break;
 							case 6: // Suv
 								System.out.println("--- COCHES ---");
 								cCoche.imprimirLista(catalogoCoches);
 								System.out.println();
-								cSuv.createSuv(ClaseDeMetodos.insertarDatosSuv());
+								cSuv.createEntidad(ClaseDeMetodos.insertarDatosSuv());
 								break;
 							case 7: // ContratoCompra
 								System.out.println("--- TRABAJADOR ---");
@@ -127,7 +127,7 @@ public class Aplicacion {
 								System.out.println("--- COCHES ---");
 								cCoche.imprimirLista(catalogoCoches);
 								System.out.println();
-								cContratoCompra.createContratocompra(ClaseDeMetodos.insertarDatosContratoCompra());
+								cContratoCompra.createEntidad(ClaseDeMetodos.insertarDatosContratoCompra());
 								break;
 							case 8: // SALIR
 								System.out.println("Saliendo del menu");
@@ -159,43 +159,43 @@ public class Aplicacion {
 								System.out.println("--- APRENDIZ ---");
 								cAprendiz.imprimirLista(catalogoAprendiz);
 								System.out.println();
-								cAprendiz.borrarAprendiz(cAprendiz.findByPK(teclado.nextInt()));
+								cAprendiz.borrarEntidad(cAprendiz.findByPK(teclado.nextInt()));
 								break;
 							case 2: // Trabajador
 								System.out.println("--- TRABAJADOR ---");
 								cTrabajador.imprimirLista(catalogoTrabajador);
 								System.out.println();
-								cTrabajador.borrarTrabajador(cTrabajador.findByPK(teclado.nextInt()));
+								cTrabajador.borrarEntidad(cTrabajador.findByPK(teclado.nextInt()));
 								break;
 							case 3: // Cliente
 								System.out.println("--- CLIENTE ---");
 								cCliente.imprimirLista(catalogoCliente);
 								System.out.println();
-								cCliente.borrarCliente(cCliente.findByPK(teclado.nextInt()));
+								cCliente.borrarEntidad(cCliente.findByPK(teclado.nextInt()));
 								break;
 							case 4: // Coche
 								System.out.println("--- COCHES ---");
 								cCoche.imprimirLista(catalogoCoches);
 								System.out.println();
-								cCoche.borrarCoche(cCoche.findByPK(teclado.nextInt()));
+								cCoche.borrarEntidad(cCoche.findByPK(teclado.nextInt()));
 								break;
 							case 5: // Deportivo
 								System.out.println("--- DEPORTIVO ---");
 								cDeportivo.imprimirLista(catalogoDeportivo);
 								System.out.println();
-								cDeportivo.borrarDeportivo(cDeportivo.findByPK(teclado.nextInt()));
+								cDeportivo.borrarEntidad(cDeportivo.findByPK(teclado.nextInt()));
 								break;
 							case 6: // Suv
 								System.out.println("--- SUV ---");
 								cSuv.imprimirLista(catalogoSuv);
 								System.out.println();
-								cSuv.borrarSuv(cSuv.findByPK(teclado.nextInt()));
+								cSuv.borrarEntidad(cSuv.findByPK(teclado.nextInt()));
 								break;
 							case 7: // ContratoCompra
 								System.out.println("--- CONTRATO COMPRAR ---");
 								cContratoCompra.imprimirLista(catalogoContratocompra);
 								System.out.println();
-								cContratoCompra.borrarContratocompra(ClaseDeMetodos.insertarDatosContratoCompra());
+								cContratoCompra.borrarEntidad(ClaseDeMetodos.insertarDatosContratoCompra());
 								break;
 							case 8: // SALIR
 								System.out.println("Saliendo del menu");

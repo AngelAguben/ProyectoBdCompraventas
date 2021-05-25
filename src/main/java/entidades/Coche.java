@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 //Especificamos la NamedQuery para que funcione
 @NamedQuery(name = "Coche.findAll", query = "SELECT c FROM Coche c")
-public class Coche implements Serializable {
+public class Coche extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// Definimos después de @Id cual será la id de la tabla
 	@Id
@@ -197,7 +197,7 @@ public class Coche implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
-		return "Coche =" + "codcoche="+ codcoche + ", cambio=" + cambio + ", color=" + color + ", combustible="
+		return "Coche =" + "codcoche=" + codcoche + ", cambio=" + cambio + ", color=" + color + ", combustible="
 				+ combustible + ", cv=" + cv + ", marca=" + marca + ", matricula=" + matricula + ", modelo=" + modelo
 				+ ", precio=" + precio + "€";
 //				", contratocompras=" + contratocompras + ", deportivos=" + deportivos + ", suvs=" + suvs + "]";

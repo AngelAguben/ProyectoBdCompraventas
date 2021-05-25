@@ -23,7 +23,7 @@ public class PruebaControladorCliente {
 		c1.setContraclien("manuu22");
 
 		// Y luego se crea y se vuelve a imprimir la lista
-		cc.createCliente(c1);
+		cc.createEntidad(c1);
 		imprimirEntidades(cc);
 
 	}

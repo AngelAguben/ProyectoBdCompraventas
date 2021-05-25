@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 //Especificamos la NamedQuery para que funcione
 @NamedQuery(name = "Contratocompra.findAll", query = "SELECT c FROM Contratocompra c")
-public class Contratocompra implements Serializable {
+public class Contratocompra extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	// Definimos después de @Id cual será la id de la tabla

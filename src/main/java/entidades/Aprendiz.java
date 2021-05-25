@@ -10,10 +10,10 @@ import javax.persistence.*;
 @Entity
 //Especificamos la NamedQuery para que funcione
 @NamedQuery(name = "Aprendiz.findAll", query = "SELECT a FROM Aprendiz a")
-public class Aprendiz implements Serializable {
+public class Aprendiz extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	// Definimos después de @Id cual será la id de la tabla
+	// Definimos despuï¿½s de @Id cual serï¿½ la id de la tabla
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codaprendiz;
@@ -28,7 +28,7 @@ public class Aprendiz implements Serializable {
 	@OneToOne(mappedBy = "aprendiz", fetch = FetchType.LAZY)
 	private Trabajador trabajador;
 
-	// Constructor sin parámetros
+	// Constructor sin parï¿½metros
 	public Aprendiz() {
 	}
 
