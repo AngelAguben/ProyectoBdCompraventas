@@ -4,13 +4,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="ProyectoCompraventa">
-<!-- 		<class>entidades.Aprendiz</class> -->
-<!-- 		<class>entidades.Cliente</class> -->
-<!-- 		<class>entidades.Coche</class> -->
-<!-- 		<class>entidades.Contratocompra</class> -->
-<!-- 		<class>entidades.Deportivo</class> -->
-<!-- 		<class>entidades.Suv</class> -->
-<!-- 		<class>entidades.Trabajador</class> -->
+		<class>entidades.Aprendiz</class>
+		<class>entidades.Cliente</class>
+		<class>entidades.Coche</class>
+		<class>entidades.Contratocompra</class>
+		<class>entidades.Deportivo</class>
+		<class>entidades.Suv</class>
+		<class>entidades.Trabajador</class>
 
 <!-- 		<properties> -->
 <!-- 		<property name="javax.persistence.jdbc.url" -->

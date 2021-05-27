@@ -9,11 +9,12 @@ import java.util.List;
  * 
  */
 @Entity
-//Especificamos la NamedQuery para que funcione
+@Table(name = "coche")
 @NamedQuery(name = "Coche.findAll", query = "SELECT c FROM Coche c")
 public class Coche extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
-	// Definimos despuÈs de @Id cual ser· la id de la tabla
+
+	// Definimos despu√©s de @Id cual ser√° la id de la tabla
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codcoche;
@@ -35,14 +36,20 @@ public class Coche extends Entidad implements Serializable {
 	private double precio;
 
 	// bi-directional many-to-one association to Contratocompra
+	// RelaciÛn bidireccional de uno a muchos entre Coche y Contratocompra, donde un
+	// coche forma parte de muchos Contratos y un contrato solo tiene un coche
 	@OneToMany(mappedBy = "coche")
 	private List<Contratocompra> contratocompras;
 
 	// bi-directional many-to-one association to Deportivo
+	// RelaciÛn bidireccional de uno a muchos entre Coche y Deportivo, donde un
+	// Coche forma parte de muchos Deportivos y un Deportivo solo es un coche
 	@OneToMany(mappedBy = "coche")
 	private List<Deportivo> deportivos;
 
 	// bi-directional many-to-one association to Suv
+	// RelaciÛn bidireccional de uno a muchos entre Coche y Suv, donde un
+	// Coche forma parte de muchos Suvs y un Suv solo es un coche
 	@OneToMany(mappedBy = "coche")
 	private List<Suv> suvs;
 
@@ -130,7 +137,7 @@ public class Coche extends Entidad implements Serializable {
 		this.contratocompras = contratocompras;
 	}
 
-	// AÒadir· datos a la lista y devolver· el objeto
+	// A√±adir√° datos a la lista y devolver√° el objeto
 	public Contratocompra addContratocompra(Contratocompra contratocompra) {
 		getContratocompras().add(contratocompra);
 		contratocompra.setCoche(this);
@@ -138,7 +145,7 @@ public class Coche extends Entidad implements Serializable {
 		return contratocompra;
 	}
 
-	// Borrar· datos a la lista y devolver· el objeto
+	// Borrar√° datos a la lista y devolver√° el objeto
 	public Contratocompra removeContratocompra(Contratocompra contratocompra) {
 		getContratocompras().remove(contratocompra);
 		contratocompra.setCoche(null);
@@ -154,7 +161,7 @@ public class Coche extends Entidad implements Serializable {
 		this.deportivos = deportivos;
 	}
 
-	// AÒadir· datos a la lista y devolver· el objeto
+	// A√±adir√° datos a la lista y devolver√° el objeto
 	public Deportivo addDeportivo(Deportivo deportivo) {
 		getDeportivos().add(deportivo);
 		deportivo.setCoche(this);
@@ -162,7 +169,7 @@ public class Coche extends Entidad implements Serializable {
 		return deportivo;
 	}
 
-	// Borrar· datos a la lista y devolver· el objeto
+	// Borrar√° datos a la lista y devolver√° el objeto
 	public Deportivo removeDeportivo(Deportivo deportivo) {
 		getDeportivos().remove(deportivo);
 		deportivo.setCoche(null);
@@ -178,7 +185,7 @@ public class Coche extends Entidad implements Serializable {
 		this.suvs = suvs;
 	}
 
-	// AÒadir· datos a la lista y devolver· el objeto
+	// A√±adir√° datos a la lista y devolver√° el objeto
 	public Suv addSuv(Suv suv) {
 		getSuvs().add(suv);
 		suv.setCoche(this);
@@ -186,7 +193,7 @@ public class Coche extends Entidad implements Serializable {
 		return suv;
 	}
 
-	// Borarr· datos a la lista y devolver· el objeto
+	// Borarr√° datos a la lista y devolver√° el objeto
 	public Suv removeSuv(Suv suv) {
 		getSuvs().remove(suv);
 		suv.setCoche(null);
@@ -197,10 +204,10 @@ public class Coche extends Entidad implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
-		return "Coche =" + "codcoche=" + codcoche + ", cambio=" + cambio + ", color=" + color + ", combustible="
-				+ combustible + ", cv=" + cv + ", marca=" + marca + ", matricula=" + matricula + ", modelo=" + modelo
-				+ ", precio=" + precio + "Ä";
-//				", contratocompras=" + contratocompras + ", deportivos=" + deportivos + ", suvs=" + suvs + "]";
-	}
 
+		return "Coche = " + "codcoche=" + codcoche + ", cambio=" + cambio + ", color=" + color + ", combustible="
+				+ combustible + ", cv=" + cv + ", marca=" + marca + ", matricula=" + matricula + ", modelo=" + modelo
+				+ ", precio=" + precio + "‚Ç¨";
+//					", contratocompras=" + contratocompras + ", deportivos=" + deportivos + ", suvs=" + suvs + "]";
+	}
 }

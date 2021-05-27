@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
-//Especificamos la NamedQuery para que funcione
+@Table(name = "aprendiz")
 @NamedQuery(name = "Aprendiz.findAll", query = "SELECT a FROM Aprendiz a")
 public class Aprendiz extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,6 +25,8 @@ public class Aprendiz extends Entidad implements Serializable {
 	private String tlfnoapren;
 
 	// bi-directional one-to-one association to Trabajador
+	// Relacion bidireccional de uno a uno entre Aprendiz y Trabajador, donde un
+	// trabajador tiene un aprendiz y un aprendiz forma parte de un trabajador
 	@OneToOne(mappedBy = "aprendiz", fetch = FetchType.LAZY)
 	private Trabajador trabajador;
 
@@ -76,8 +78,15 @@ public class Aprendiz extends Entidad implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
+
+//		String trab = "";
+//		trab = "CodTrabajador = " + getTrabajador().getCodtrabajador();
+//		if (trab.equalsIgnoreCase("CodTrabajador = ")) {
+//			trab = "No tiene trabajador";
+//		}
+
 		return "Aprendiz = codaprendiz=" + codaprendiz + ", dniapren=" + dniapren + ", nomapren=" + nomapren
 				+ ", tlfnoapren=" + tlfnoapren;
+//		+ ", trabajador a cargo = ";
 	}
-
 }

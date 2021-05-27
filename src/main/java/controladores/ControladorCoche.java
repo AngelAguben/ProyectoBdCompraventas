@@ -17,7 +17,7 @@ public class ControladorCoche extends Controlador {
 //	private EntityManager em;
 //	private Query consulta;
 //
-//	// Este método borrará un Coche indicado por parámetros
+//	// Este mï¿½todo borrarï¿½ un Coche indicado por parï¿½metros
 //	public void borrarCoche(Coche a) {
 //		this.em = entityManagerFactory.createEntityManager();
 //		Coche aux = null;
@@ -28,22 +28,22 @@ public class ControladorCoche extends Controlador {
 //			aux = this.em.merge(a);
 //		}
 //		// Ahora se puede borrar usando aux, porque es una entidad gestionada por la
-//		// caché
+//		// cachï¿½
 //		this.em.remove(aux);
-//		// Se vuelca la información del contexto (caché intermedia) en la base de datos
+//		// Se vuelca la informaciï¿½n del contexto (cachï¿½ intermedia) en la base de datos
 //		this.em.getTransaction().commit();
 //		// Cierra el entityManager
 //		this.em.close();
 //	}
 //
-//	// Este método modificará un Coche pasado por parámetros
+//	// Este mï¿½todo modificarï¿½ un Coche pasado por parï¿½metros
 //	public void modifyCoche(Coche a) {
 //		this.em = entityManagerFactory.createEntityManager();
-//		// En este caso es necesario iniciar una transacción en la base de datos
-//		// porque vamos a persistir información en la misma
+//		// En este caso es necesario iniciar una transacciï¿½n en la base de datos
+//		// porque vamos a persistir informaciï¿½n en la misma
 //		this.em.getTransaction().begin();
 //		// merge(Objeto) - Si una entidad con el mismo identificador que v existe en el
-//		// contexto de persistencia (caché), se actualizan sus atributos y se devuelve
+//		// contexto de persistencia (cachï¿½), se actualizan sus atributos y se devuelve
 //		// como entidad gestionada
 //		// Si el objeto a no existe en la base de datos, se comporta como persist() y la
 //		// entidad gestionada es la devuelta por merge(), por lo que v es una entidad
@@ -54,28 +54,28 @@ public class ControladorCoche extends Controlador {
 //
 //	}
 //
-//	// Este método creará un Coche pasado por parámetros
+//	// Este mï¿½todo crearï¿½ un Coche pasado por parï¿½metros
 //	public void createCoche(Coche a) {
 //		this.em = entityManagerFactory.createEntityManager();
-//		// En este caso es necesario iniciar una transacción en la base de datos
-//		// porque vamos a persistir información en la misma
+//		// En este caso es necesario iniciar una transacciï¿½n en la base de datos
+//		// porque vamos a persistir informaciï¿½n en la misma
 //		this.em.getTransaction().begin();
-//		// Se guarda el objeto en el contexto de persistencia (caché intermedia)
+//		// Se guarda el objeto en el contexto de persistencia (cachï¿½ intermedia)
 //		// a es una entidad conectada
 //		this.em.persist(a);
-//		// Se vuelca la información del contexto (caché intermedia) en la base de datos
+//		// Se vuelca la informaciï¿½n del contexto (cachï¿½ intermedia) en la base de datos
 //		this.em.getTransaction().commit();
 //		// Cierra el entityManager
 //		this.em.close();
 //	}
 //
-	// Este método encontrará un Coche pasando por parámetros su pk y lo
-	// devolverá
+	// Este mï¿½todo encontrarï¿½ un Coche pasando por parï¿½metros su pk y lo
+	// devolverï¿½
 	public Coche findByPK(int pk) {
 		this.em = entityManagerFactory.createEntityManager();
 		Coche aux = null;
 		// Se crea el objeto Query a partir de una SQL nativa
-		this.consulta = em.createNativeQuery("Select * from Coche where codCoche = ?", Coche.class);
+		this.consulta = em.createNativeQuery("Select * from coche where codcoche = ?", Coche.class);
 		this.consulta.setParameter(1, pk);
 		aux = (Coche) consulta.getSingleResult();
 		this.em.close();
@@ -83,7 +83,7 @@ public class ControladorCoche extends Controlador {
 
 	}
 
-	// Este método devolverá una lista de todos los coches de la base de datos
+	// Este mï¿½todo devolverï¿½ una lista de todos los coches de la base de datos
 	public List<Coche> findAll() {
 		this.em = entityManagerFactory.createEntityManager();
 		this.consulta = em.createNamedQuery("Coche.findAll");
@@ -92,7 +92,7 @@ public class ControladorCoche extends Controlador {
 		return listaCoche;
 	}
 
-	// Método para imprimir la lista
+	// Mï¿½todo para imprimir la lista
 	public void imprimirLista(List<Coche> lista) {
 		for (Coche co : lista) {
 			System.out.println(co);

@@ -9,12 +9,12 @@ import java.util.List;
  * 
  */
 @Entity
-// Especificamos la NamedQuery para que funcione
+@Table(name = "trabajador")
 @NamedQuery(name = "Trabajador.findAll", query = "SELECT t FROM Trabajador t")
 public class Trabajador extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	// Definimos después de @Id cual será la id de la tabla
+	// Definimos despuÃ©s de @Id cual serÃ¡ la id de la tabla
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codtrabajador;
@@ -28,18 +28,23 @@ public class Trabajador extends Entidad implements Serializable {
 	private String tlfnotrab;
 
 	// bi-directional many-to-one association to Contratocompra
+	// Relación bidireccional de uno a muchos entre Trabajador y Contratocompra,
+	// donde un Trabajador forma parte de muchos Contratos y un Contrato solo tiene
+	// un Trabajador
 	@OneToMany(mappedBy = "trabajador")
 	private List<Contratocompra> contratocompras;
 
 	// bi-directional one-to-one association to Aprendiz
+	// Relacion bidireccional de uno a uno entre Aprendiz y Trabajador, donde un
+	// trabajador tiene un aprendiz y un aprendiz forma parte de un trabajador
 	@OneToOne(fetch = FetchType.LAZY)
-	// Insertará la columna de la FK que viene de Aprendiz<
-	// Aquí tendremos que poner insertable = false y updateble = false, porque si no
-	// se insertará también en la otra tabla y dará error
+	// InsertarÃ¡ la columna de la FK que viene de Aprendiz
+	// AquÃ­ tendremos que poner insertable = false y updateble = false, porque si
+	// no se insertarÃ¡ tambiÃ©n en la otra tabla y darÃ¡ error
 	@JoinColumn(name = "codaprendiz", insertable = false, updatable = false)
 	private Aprendiz aprendiz;
 
-	// Constructor sin parámetros
+	// Constructor sin parÃ¡metros
 	public Trabajador() {
 	}
 
@@ -92,7 +97,7 @@ public class Trabajador extends Entidad implements Serializable {
 		this.contratocompras = contratocompras;
 	}
 
-	// Añadirá datos a la lista y devolverá el objeto
+	// AÃ±adirÃ¡ datos a la lista y devolverÃ¡ el objeto
 	public Contratocompra addContratocompra(Contratocompra contratocompra) {
 		getContratocompras().add(contratocompra);
 		contratocompra.setTrabajador(this);
@@ -100,7 +105,7 @@ public class Trabajador extends Entidad implements Serializable {
 		return contratocompra;
 	}
 
-	// Borrará datos a la lista y devolverá el objeto
+	// BorrarÃ¡ datos a la lista y devolverÃ¡ el objeto
 	public Contratocompra removeContratocompra(Contratocompra contratocompra) {
 		getContratocompras().remove(contratocompra);
 		contratocompra.setTrabajador(null);
@@ -119,8 +124,16 @@ public class Trabajador extends Entidad implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
+		String coches = "";
+		for (Contratocompra contratocompra : contratocompras) {
+			coches += "CodCoche = " + contratocompra.getCoche().getCodcoche() + ", ";
+		}
+		if (coches.equalsIgnoreCase("")) {
+			coches = "No ha vendido nada";
+		}
+
 		return "Trabajador = codtrabajador=" + codtrabajador + ", dnitrab=" + dnitrab + ", horario=" + horario
-				+ ", nomtrab=" + nomtrab + ", tlfnotrab=" + tlfnotrab;
+				+ ", nomtrab=" + nomtrab + ", tlfnotrab=" + tlfnotrab + ", coches vendidos = " + coches;
 	}
 
 }

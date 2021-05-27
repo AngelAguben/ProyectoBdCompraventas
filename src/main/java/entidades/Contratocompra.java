@@ -8,19 +8,18 @@ import java.util.Date;
  * The persistent class for the contratocompra database table.
  * 
  */
-// AnotaciÛn para especificar desde donde ser· la entidad
 @Entity
-//Especificamos la NamedQuery para que funcione
+@Table(name = "contratocompra")
 @NamedQuery(name = "Contratocompra.findAll", query = "SELECT c FROM Contratocompra c")
 public class Contratocompra extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	// Definimos despuÈs de @Id cual ser· la id de la tabla
+	// Definimos despu√©s de @Id cual ser√° la id de la tabla
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codcontracompra;
 
-	// La anotaciÛn @Temporal sirve para indicar a JPA el tipo de dato
+	// La anotaci√≥n @Temporal sirve para indicar a JPA el tipo de dato
 	// JDBC java.sql (DATE, TIME, TIMESTAMP) al que pasar el atributo
 	// "fechaventa", que es de tipo java.util.Date
 	@Temporal(TemporalType.DATE)
@@ -29,24 +28,31 @@ public class Contratocompra extends Entidad implements Serializable {
 	private double precioventa;
 
 	// bi-directional many-to-one association to Cliente
+	// Asociacion bidireccioal de uno a muchos entre Cliente que es uno y
+	// ContratoCompra que es muchos
+	// Un cliente forma parte de muchos ContratoCompras y un ContratoCompra tiene un
+	// cliente
 	@ManyToOne(fetch = FetchType.LAZY)
-	// Insertar· la columna de la FK que viene de Cliente
+	// Insertar√° la columna de la FK que viene de Cliente
 	@JoinColumn(name = "codcliente")
 	private Cliente cliente;
 
 	// bi-directional many-to-one association to Coche
+	// RelaciÛn bidireccional de uno a muchos entre Coche y Contratocompra, donde un
+	// coche forma parte de muchos Contratos y un contrato solo tiene un coche
 	@ManyToOne(fetch = FetchType.LAZY)
-	// Insertar· la columna de la FK que viene de Coche
+	// Insertar√° la columna de la FK que viene de Coche
 	@JoinColumn(name = "codcoche")
 	private Coche coche;
 
 	// bi-directional many-to-one association to Trabajador
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	// Insertar· la columna de la FK que viene de Trabajador
+	// Insertar√° la columna de la FK que viene de Trabajador
 	@JoinColumn(name = "codtrabajador")
 	private Trabajador trabajador;
 
-	// Constructor sin par·metros
+	// Constructor sin par√°metros
 	public Contratocompra() {
 	}
 

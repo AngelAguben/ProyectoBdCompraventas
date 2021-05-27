@@ -9,7 +9,7 @@ import java.util.List;
  * 
  */
 @Entity
-//Especificamos la NamedQuery para que funcione
+@Table(name = "cliente")
 @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
 public class Cliente extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -17,7 +17,7 @@ public class Cliente extends Entidad implements Serializable {
 	private String ape1clien;
 
 	private String ape2clien;
-	// Definimos despuÈs de @Id cual ser· la id de la tabla
+	// Definimos despu√©s de @Id cual ser√° la id de la tabla
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codcliente;
@@ -33,10 +33,14 @@ public class Cliente extends Entidad implements Serializable {
 	private String usuclien;
 
 	// bi-directional many-to-one association to Contratocompra
+	// Asociacion bidireccioal de uno a muchos entre Cliente que es uno y
+	// ContratoCompra que es muchos
+	// Un cliente forma parte de muchos ContratoCompras y un ContratoCompra tiene un
+	// cliente
 	@OneToMany(mappedBy = "cliente")
 	private List<Contratocompra> contratocompras;
 
-	// Constructor sin par·metros
+	// Constructor sin par√°metros
 	public Cliente() {
 	}
 
@@ -113,7 +117,7 @@ public class Cliente extends Entidad implements Serializable {
 		this.contratocompras = contratocompras;
 	}
 
-	// AÒadir· datos a la lista y devolver· el objeto
+	// A√±adir√° datos a la lista y devolver√° el objeto
 	public Contratocompra addContratocompra(Contratocompra contratocompra) {
 		getContratocompras().add(contratocompra);
 		contratocompra.setCliente(this);
@@ -121,7 +125,7 @@ public class Cliente extends Entidad implements Serializable {
 		return contratocompra;
 	}
 
-	// AÒadir· datos a la lista y devolver· el objeto
+	// A√±adir√° datos a la lista y devolver√° el objeto
 	public Contratocompra removeContratocompra(Contratocompra contratocompra) {
 		getContratocompras().remove(contratocompra);
 		contratocompra.setCliente(null);
@@ -132,9 +136,17 @@ public class Cliente extends Entidad implements Serializable {
 	// ToString
 	@Override
 	public String toString() {
+		String coches = "";
+		for (Contratocompra contratocompra : contratocompras) {
+			coches += "CodCoche = " + contratocompra.getCoche().getCodcoche() + ", ";
+		}
+		if (coches.equalsIgnoreCase("")) {
+			coches = "No ha comprado nada";
+		}
+
 		return "Cliente = codcliente=" + codcliente + ", nomclien=" + nomclien + ", ape1clien=" + ape1clien
 				+ ", ape2clien=" + ape2clien + ", contraclien=" + contraclien + ", correoclien=" + correoclien
-				+ ", tlfnoclien=" + tlfnoclien + ", usuclien=" + usuclien;
+				+ ", tlfnoclien=" + tlfnoclien + ", usuclien=" + usuclien + ", coches comprados = " + coches;
 	}
 
 }

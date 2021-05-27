@@ -8,12 +8,12 @@ import javax.persistence.*;
  * 
  */
 @Entity
-//Especificamos la NamedQuery para que funcione
+@Table(name = "suv")
 @NamedQuery(name = "Suv.findAll", query = "SELECT s FROM Suv s")
 public class Suv extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	// Definimos despuÈs de @Id cual ser· la id de la tabla
+	// Definimos despu√©s de @Id cual ser√° la id de la tabla
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codsuv;
@@ -21,12 +21,14 @@ public class Suv extends Entidad implements Serializable {
 	private int plazas;
 
 	// bi-directional many-to-one association to Coche
+	// RelaciÛn bidireccional de uno a muchos entre Coche y Suv, donde un
+	// Coche forma parte de muchos Suvs y un Suv solo es un coche
 	@ManyToOne(fetch = FetchType.LAZY)
-	// Insertar· la columna de la FK que viene de Coche
+	// Insertar√° la columna de la FK que viene de Coche
 	@JoinColumn(name = "codcoche")
 	private Coche coche;
 
-	// Constructor sin par·metros
+	// Constructor sin par√°metros
 	public Suv() {
 	}
 

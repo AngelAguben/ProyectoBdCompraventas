@@ -16,7 +16,7 @@ public class ControladorDeportivo extends Controlador {
 //	private EntityManager em;
 //	private Query consulta;
 //
-//	// Este método borrará un Deportivo indicado por parámetros
+//	// Este mï¿½todo borrarï¿½ un Deportivo indicado por parï¿½metros
 //	public void borrarDeportivo(Deportivo a) {
 //		this.em = entityManagerFactory.createEntityManager();
 //		Deportivo aux = null;
@@ -27,22 +27,22 @@ public class ControladorDeportivo extends Controlador {
 //			aux = this.em.merge(a);
 //		}
 //		// Ahora se puede borrar usando aux, porque es una entidad gestionada por la
-//		// caché
+//		// cachï¿½
 //		this.em.remove(aux);
-//		// Se vuelca la información del contexto (caché intermedia) en la base de datos
+//		// Se vuelca la informaciï¿½n del contexto (cachï¿½ intermedia) en la base de datos
 //		this.em.getTransaction().commit();
 //		// Cierra el entityManager
 //		this.em.close();
 //	}
 //
-//	// Este método modificará un Deportivo pasado por parámetros
+//	// Este mï¿½todo modificarï¿½ un Deportivo pasado por parï¿½metros
 //	public void modifyDeportivo(Deportivo a) {
 //		this.em = entityManagerFactory.createEntityManager();
-//		// En este caso es necesario iniciar una transacción en la base de datos
-//		// porque vamos a persistir información en la misma
+//		// En este caso es necesario iniciar una transacciï¿½n en la base de datos
+//		// porque vamos a persistir informaciï¿½n en la misma
 //		this.em.getTransaction().begin();
 //		// merge(Objeto) - Si una entidad con el mismo identificador que v existe en el
-//		// contexto de persistencia (caché), se actualizan sus atributos y se devuelve
+//		// contexto de persistencia (cachï¿½), se actualizan sus atributos y se devuelve
 //		// como entidad gestionada
 //		// Si el objeto a no existe en la base de datos, se comporta como persist() y la
 //		// entidad gestionada es la devuelta por merge(), por lo que v es una entidad
@@ -53,28 +53,28 @@ public class ControladorDeportivo extends Controlador {
 //
 //	}
 //
-//	// Este método creará un Deportivo pasado por parámetros
+//	// Este mï¿½todo crearï¿½ un Deportivo pasado por parï¿½metros
 //	public void createDeportivo(Deportivo a) {
 //		this.em = entityManagerFactory.createEntityManager();
-//		// En este caso es necesario iniciar una transacción en la base de datos
-//		// porque vamos a persistir información en la misma
+//		// En este caso es necesario iniciar una transacciï¿½n en la base de datos
+//		// porque vamos a persistir informaciï¿½n en la misma
 //		this.em.getTransaction().begin();
-//		// Se guarda el objeto en el contexto de persistencia (caché intermedia)
+//		// Se guarda el objeto en el contexto de persistencia (cachï¿½ intermedia)
 //		// a es una entidad conectada
 //		this.em.persist(a);
-//		// Se vuelca la información del contexto (caché intermedia) en la base de datos
+//		// Se vuelca la informaciï¿½n del contexto (cachï¿½ intermedia) en la base de datos
 //		this.em.getTransaction().commit();
 //		// Cierra el entityManager
 //		this.em.close();
 //	}
 
-	// Este método encontrará un Deportivo pasando por parámetros su pk y lo
-	// devolverá
+	// Este mï¿½todo encontrarï¿½ un Deportivo pasando por parï¿½metros su pk y lo
+	// devolverï¿½
 	public Deportivo findByPK(int pk) {
 		this.em = entityManagerFactory.createEntityManager();
 		Deportivo aux = null;
 		// Se crea el objeto Query a partir de una SQL nativa
-		this.consulta = em.createNativeQuery("Select * from Deportivo where codDeportivo = ?", Deportivo.class);
+		this.consulta = em.createNativeQuery("Select * from deportivo where coddeportivo = ?", Deportivo.class);
 		this.consulta.setParameter(1, pk);
 		aux = (Deportivo) consulta.getSingleResult();
 		this.em.close();
@@ -82,7 +82,7 @@ public class ControladorDeportivo extends Controlador {
 
 	}
 
-	// Este método devolverá una lista de todos los Deportivos de la base de datos
+	// Este mï¿½todo devolverï¿½ una lista de todos los Deportivos de la base de datos
 	public List<Deportivo> findAll() {
 		this.em = entityManagerFactory.createEntityManager();
 		this.consulta = em.createNamedQuery("Deportivo.findAll");
@@ -91,7 +91,7 @@ public class ControladorDeportivo extends Controlador {
 		return listaDeportivo;
 	}
 
-	// Método para imprimir la lista
+	// Mï¿½todo para imprimir la lista
 	public void imprimirLista(List<Deportivo> lista) {
 		for (Deportivo depor : lista) {
 			System.out.println(depor);
