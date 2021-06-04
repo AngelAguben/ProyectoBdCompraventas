@@ -2,10 +2,7 @@ package controladores;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.NoResultException;
 
 import entidades.Contratocompra;
 
@@ -81,6 +78,22 @@ public class ControladorContratoCompra extends Controlador {
 		this.em.close();
 		return aux;
 
+	}
+
+	// Método para buscar un Contratocompra por su nombre
+	public Contratocompra buscarPorCodCliente(int fk) {
+		this.em = entityManagerFactory.createEntityManager();
+		Contratocompra c = null;
+		// Se crea el objeto Query a partir de una SQL nativa
+		this.consulta = em.createNamedQuery("Contratocompra.buscarPorCodCliente");
+		this.consulta.setParameter(1, fk);
+		try {
+			c = (Contratocompra) consulta.getSingleResult();
+		} catch (NoResultException nre) {
+			c = null;
+		}
+		this.em.close();
+		return c;
 	}
 
 	// Este m�todo devolver� una lista de todos los Contratocompraes de la base de

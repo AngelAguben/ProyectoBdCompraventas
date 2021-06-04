@@ -2,10 +2,7 @@ package controladores;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.NoResultException;
 
 import entidades.Cliente;
 
@@ -17,7 +14,7 @@ public class ControladorCliente extends Controlador {
 //	private EntityManager em;
 //	private Query consulta;
 //
-//	// Este método borrará un Cliente indicado por parámetros
+//	// Este mï¿½todo borrarï¿½ un Cliente indicado por parï¿½metros
 //	public void borrarCliente(Cliente c) {
 //		this.em = entityManagerFactory.createEntityManager();
 //		Cliente aux = null;
@@ -28,22 +25,22 @@ public class ControladorCliente extends Controlador {
 //			aux = this.em.merge(c);
 //		}
 //		// Ahora se puede borrar usando aux, porque es una entidad gestionada por la
-//		// caché
+//		// cachï¿½
 //		this.em.remove(aux);
-//		// Se vuelca la información del contexto (caché intermedia) en la base de datos
+//		// Se vuelca la informaciï¿½n del contexto (cachï¿½ intermedia) en la base de datos
 //		this.em.getTransaction().commit();
 //		// Cierra el entityManager
 //		this.em.close();
 //	}
 //
-//	// Este método modificará un Cliente pasado por parámetros
+//	// Este mï¿½todo modificarï¿½ un Cliente pasado por parï¿½metros
 //	public void modifyCliente(Cliente c) {
 //		this.em = entityManagerFactory.createEntityManager();
-//		// En este caso es necesario iniciar una transacción en la base de datos
-//		// porque vamos a persistir información en la misma
+//		// En este caso es necesario iniciar una transacciï¿½n en la base de datos
+//		// porque vamos a persistir informaciï¿½n en la misma
 //		this.em.getTransaction().begin();
 //		// merge(Objeto) - Si una entidad con el mismo identificador que v existe en el
-//		// contexto de persistencia (caché), se actualizan sus atributos y se devuelve
+//		// contexto de persistencia (cachï¿½), se actualizan sus atributos y se devuelve
 //		// como entidad gestionada
 //		// Si el objeto a no existe en la base de datos, se comporta como persist() y la
 //		// entidad gestionada es la devuelta por merge(), por lo que v es una entidad
@@ -54,23 +51,23 @@ public class ControladorCliente extends Controlador {
 //
 //	}
 //
-//	// Este método creará un Cliente pasado por parámetros
+//	// Este mï¿½todo crearï¿½ un Cliente pasado por parï¿½metros
 //	public void createCliente(Cliente c) {
 //		this.em = entityManagerFactory.createEntityManager();
-//		// En este caso es necesario iniciar una transacción en la base de datos
-//		// porque vamos a persistir información en la misma
+//		// En este caso es necesario iniciar una transacciï¿½n en la base de datos
+//		// porque vamos a persistir informaciï¿½n en la misma
 //		this.em.getTransaction().begin();
-//		// Se guarda el objeto en el contexto de persistencia (caché intermedia)
+//		// Se guarda el objeto en el contexto de persistencia (cachï¿½ intermedia)
 //		// a es una entidad conectada
 //		this.em.persist(c);
-//		// Se vuelca la información del contexto (caché intermedia) en la base de datos
+//		// Se vuelca la informaciï¿½n del contexto (cachï¿½ intermedia) en la base de datos
 //		this.em.getTransaction().commit();
 //		// Cierra el entityManager
 //		this.em.close();
 //	}
 
-	// Este método encontrará un Cliente pasando por parámetros su pk y lo
-	// devolverá
+	// Este mï¿½todo encontrarï¿½ un Cliente pasando por parï¿½metros su pk y lo
+	// devolverï¿½
 	public Cliente findByPK(int pk) {
 		this.em = entityManagerFactory.createEntityManager();
 		Cliente aux = null;
@@ -83,7 +80,23 @@ public class ControladorCliente extends Controlador {
 
 	}
 
-	// Este método devolverá una lista de todos los clientes de la base de datos
+	// MÃ©todo para buscar un Cliente por su nombre
+	public Cliente buscarPorNombre(String nombre) {
+		this.em = entityManagerFactory.createEntityManager();
+		Cliente c = null;
+		// Se crea el objeto Query a partir de una SQL nativa
+		this.consulta = em.createNamedQuery("Cliente.buscarPorNombre");
+		this.consulta.setParameter("nombre", nombre);
+		try {
+			c = (Cliente) consulta.getSingleResult();
+		} catch (NoResultException nre) {
+			c = null;
+		}
+		this.em.close();
+		return c;
+	}
+
+	// Este mï¿½todo devolverï¿½ una lista de todos los clientes de la base de datos
 	public List<Cliente> findAll() {
 		this.em = entityManagerFactory.createEntityManager();
 		this.consulta = em.createNamedQuery("Cliente.findAll");
@@ -92,7 +105,7 @@ public class ControladorCliente extends Controlador {
 		return listaCliente;
 	}
 
-	// Método para imprimir la lista
+	// Mï¿½todo para imprimir la lista
 	public void imprimirLista(List<Cliente> lista) {
 		for (Cliente cli : lista) {
 			System.out.println(cli);

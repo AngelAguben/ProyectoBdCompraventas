@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -81,6 +82,22 @@ public class ControladorTrabajador extends Controlador {
 		this.em.close();
 		return aux;
 
+	}
+
+	// Método para buscar un Trabajador por su nombre
+	public Trabajador buscarPorNombre(String nombre) {
+		this.em = entityManagerFactory.createEntityManager();
+		Trabajador t = null;
+		// Se crea el objeto Query a partir de una SQL nativa
+		this.consulta = em.createNamedQuery("Trabajador.buscarPorNombre");
+		this.consulta.setParameter("nombre", nombre);
+		try {
+			t = (Trabajador) consulta.getSingleResult();
+		} catch (NoResultException nre) {
+			t = null;
+		}
+		this.em.close();
+		return t;
 	}
 
 	// Este m�todo devolver� una lista de todos los trabajadores de la base de datos

@@ -10,7 +10,9 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "contratocompra")
-@NamedQuery(name = "Contratocompra.findAll", query = "SELECT c FROM Contratocompra c")
+@NamedQueries({ @NamedQuery(name = "Contratocompra.findAll", query = "SELECT c FROM Contratocompra c"),
+		@NamedQuery(name = "Contratocompra.buscarPorCodCliente", query = "SELECT c FROM Contratocompra c WHERE c.cliente = :codcliente"), })
+
 public class Contratocompra extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +40,7 @@ public class Contratocompra extends Entidad implements Serializable {
 	private Cliente cliente;
 
 	// bi-directional many-to-one association to Coche
-	// Relación bidireccional de uno a muchos entre Coche y Contratocompra, donde un
+	// Relaciï¿½n bidireccional de uno a muchos entre Coche y Contratocompra, donde un
 	// coche forma parte de muchos Contratos y un contrato solo tiene un coche
 	@ManyToOne(fetch = FetchType.LAZY)
 	// InsertarÃ¡ la columna de la FK que viene de Coche

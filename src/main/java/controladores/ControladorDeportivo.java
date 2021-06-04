@@ -2,10 +2,7 @@ package controladores;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.NoResultException;
 
 import entidades.Deportivo;
 
@@ -80,6 +77,22 @@ public class ControladorDeportivo extends Controlador {
 		this.em.close();
 		return aux;
 
+	}
+
+	// Método para buscar un Deportivo por codigo de coche
+	public Deportivo buscarPorCodCoche(int fk) {
+		this.em = entityManagerFactory.createEntityManager();
+		Deportivo c = null;
+		// Se crea el objeto Query a partir de una SQL nativa
+		this.consulta = em.createNamedQuery("Deportivo.buscarPorCodCoche");
+		this.consulta.setParameter(1, fk);
+		try {
+			c = (Deportivo) consulta.getSingleResult();
+		} catch (NoResultException nre) {
+			c = null;
+		}
+		this.em.close();
+		return c;
 	}
 
 	// Este m�todo devolver� una lista de todos los Deportivos de la base de datos

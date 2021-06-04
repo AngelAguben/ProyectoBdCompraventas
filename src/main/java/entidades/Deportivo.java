@@ -9,7 +9,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "deportivo")
-@NamedQuery(name = "Deportivo.findAll", query = "SELECT d FROM Deportivo d")
+@NamedQueries({ @NamedQuery(name = "Deportivo.findAll", query = "SELECT d FROM Deportivo d"),
+		@NamedQuery(name = "Deportivo.buscarPorCodCoche", query = "SELECT c FROM Contratocompra c WHERE c.coche = :codcliente"), })
+
 public class Deportivo extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -23,7 +25,7 @@ public class Deportivo extends Entidad implements Serializable {
 	private boolean turbo;
 
 	// bi-directional many-to-one association to Coche
-	// Relación bidireccional de uno a muchos entre Coche y Deportivo, donde un
+	// Relaciï¿½n bidireccional de uno a muchos entre Coche y Deportivo, donde un
 	// Coche forma parte de muchos Deportivos y un Deportivo solo es un coche
 	@ManyToOne(fetch = FetchType.LAZY)
 	// InsertarÃ¡ la columna de la FK que viene de Coche

@@ -11,7 +11,7 @@ public class PruebaControladorTrabajador {
 		// Se imprimen todos los registros que haya en la tabla trabajador
 		imprimirEntidades(ct);
 
-		// Creación de un trabajador
+		// Creaciï¿½n de un trabajador
 		Trabajador t1 = new Trabajador();
 		t1.setNomtrab("Paco Jones");
 		t1.setDnitrab("84756567U");
@@ -21,10 +21,12 @@ public class PruebaControladorTrabajador {
 		// Y luego se crea y se vuelve a imprimir la lista
 		ct.createEntidad(t1);
 		imprimirEntidades(ct);
+		
+		ct.buscarPorNombre("Carlo");
 
 	}
 
-	// Método para imprimir las entidades de la base de datos
+	// Mï¿½todo para imprimir las entidades de la base de datos
 	private static void imprimirEntidades(ControladorTrabajador ct) {
 		System.out.println("ENTIDADES EN LA BASE DE DATOS ---------------");
 		// Imprimiremos la lista de trabajadores

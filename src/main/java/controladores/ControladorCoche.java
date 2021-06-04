@@ -2,10 +2,7 @@ package controladores;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.NoResultException;
 
 import entidades.Coche;
 
@@ -81,6 +78,22 @@ public class ControladorCoche extends Controlador {
 		this.em.close();
 		return aux;
 
+	}
+
+	// Método para buscar un Coche por su nombre
+	public Coche buscarPorMatricula(String matricula) {
+		this.em = entityManagerFactory.createEntityManager();
+		Coche c = null;
+		// Se crea el objeto Query a partir de una SQL nativa
+		this.consulta = em.createNamedQuery("Coche.buscarPorMatricula");
+		this.consulta.setParameter("matricula", matricula);
+		try {
+			c = (Coche) consulta.getSingleResult();
+		} catch (NoResultException nre) {
+			c = null;
+		}
+		this.em.close();
+		return c;
 	}
 
 	// Este m�todo devolver� una lista de todos los coches de la base de datos

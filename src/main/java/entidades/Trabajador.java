@@ -2,6 +2,7 @@ package entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.List;
 
 /**
@@ -10,7 +11,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "trabajador")
-@NamedQuery(name = "Trabajador.findAll", query = "SELECT t FROM Trabajador t")
+@NamedQueries({ @NamedQuery(name = "Trabajador.findAll", query = "SELECT t FROM Trabajador t"),
+		@NamedQuery(name = "Trabajador.buscarPorNombre", query = "SELECT t FROM Trabajador t WHERE t.nomtrab = :nomtrab"), })
+
 public class Trabajador extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -28,7 +31,7 @@ public class Trabajador extends Entidad implements Serializable {
 	private String tlfnotrab;
 
 	// bi-directional many-to-one association to Contratocompra
-	// Relación bidireccional de uno a muchos entre Trabajador y Contratocompra,
+	// Relaciï¿½n bidireccional de uno a muchos entre Trabajador y Contratocompra,
 	// donde un Trabajador forma parte de muchos Contratos y un Contrato solo tiene
 	// un Trabajador
 	@OneToMany(mappedBy = "trabajador")

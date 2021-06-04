@@ -2,10 +2,7 @@ package controladores;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.NoResultException;
 
 import entidades.Suv;
 
@@ -80,6 +77,22 @@ public class ControladorSuv extends Controlador {
 		this.em.close();
 		return aux;
 
+	}
+
+	// Método para buscar un Suv por codigo de coche
+	public Suv buscarPorCodCoche(int fk) {
+		this.em = entityManagerFactory.createEntityManager();
+		Suv c = null;
+		// Se crea el objeto Query a partir de una SQL nativa
+		this.consulta = em.createNamedQuery("Suv.buscarPorCodCoche");
+		this.consulta.setParameter(1, fk);
+		try {
+			c = (Suv) consulta.getSingleResult();
+		} catch (NoResultException nre) {
+			c = null;
+		}
+		this.em.close();
+		return c;
 	}
 
 	// Este m�todo devolver� una lista de todos los Suvs de la base de datos

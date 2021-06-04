@@ -10,7 +10,8 @@ import java.util.List;
  */
 @Entity
 @Table(name = "coche")
-@NamedQuery(name = "Coche.findAll", query = "SELECT c FROM Coche c")
+@NamedQueries({ @NamedQuery(name = "Coche.findAll", query = "SELECT c FROM Coche c"),
+		@NamedQuery(name = "Coche.buscarPorMatricula", query = "SELECT c FROM Coche c WHERE c.matricula = :matricula"), })
 public class Coche extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -36,19 +37,19 @@ public class Coche extends Entidad implements Serializable {
 	private double precio;
 
 	// bi-directional many-to-one association to Contratocompra
-	// Relación bidireccional de uno a muchos entre Coche y Contratocompra, donde un
+	// Relaciï¿½n bidireccional de uno a muchos entre Coche y Contratocompra, donde un
 	// coche forma parte de muchos Contratos y un contrato solo tiene un coche
 	@OneToMany(mappedBy = "coche")
 	private List<Contratocompra> contratocompras;
 
 	// bi-directional many-to-one association to Deportivo
-	// Relación bidireccional de uno a muchos entre Coche y Deportivo, donde un
+	// Relaciï¿½n bidireccional de uno a muchos entre Coche y Deportivo, donde un
 	// Coche forma parte de muchos Deportivos y un Deportivo solo es un coche
 	@OneToMany(mappedBy = "coche")
 	private List<Deportivo> deportivos;
 
 	// bi-directional many-to-one association to Suv
-	// Relación bidireccional de uno a muchos entre Coche y Suv, donde un
+	// Relaciï¿½n bidireccional de uno a muchos entre Coche y Suv, donde un
 	// Coche forma parte de muchos Suvs y un Suv solo es un coche
 	@OneToMany(mappedBy = "coche")
 	private List<Suv> suvs;

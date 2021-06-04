@@ -369,7 +369,7 @@ public class Aplicacion {
 				System.out.println("VALOR IRRECONOCIBLE");
 				// La variable error la ponemos a true
 				error = true;
-//				// Y limpiamos el b�ffer
+				// Y limpiamos el b�ffer
 				teclado.nextLine();
 			}
 

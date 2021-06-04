@@ -12,7 +12,7 @@ public class PruebaControladorCliente {
 		// Se imprimen todos los registros que haya en la tabla cliente
 		imprimirEntidades(cc);
 
-		// Creación de un cliente
+		// Creaciï¿½n de un cliente
 		Cliente c1 = new Cliente();
 		c1.setNomclien("Manuel");
 		c1.setApe1clien("Tellez");
@@ -25,10 +25,13 @@ public class PruebaControladorCliente {
 		// Y luego se crea y se vuelve a imprimir la lista
 		cc.createEntidad(c1);
 		imprimirEntidades(cc);
+		
+		c1 = cc.buscarPorNombre("Antonio");
+		System.out.println(c1);
 
 	}
 
-	// Método para imprimir las entidades de la base de datos
+	// Mï¿½todo para imprimir las entidades de la base de datos
 	private static void imprimirEntidades(ControladorCliente cc) {
 		System.out.println("ENTIDADES EN LA BASE DE DATOS ---------------");
 		// Imprimiremos la lista de clientes

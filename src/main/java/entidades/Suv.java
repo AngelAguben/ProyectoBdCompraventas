@@ -10,6 +10,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "suv")
 @NamedQuery(name = "Suv.findAll", query = "SELECT s FROM Suv s")
+@NamedQueries({ @NamedQuery(name = "Suv.findAll", query = "SELECT s FROM Suv s"),
+		@NamedQuery(name = "Suv.buscarPorCodCoche", query = "SELECT s FROM Suv s WHERE s.coche = :codcliente"), })
+
 public class Suv extends Entidad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +24,7 @@ public class Suv extends Entidad implements Serializable {
 	private int plazas;
 
 	// bi-directional many-to-one association to Coche
-	// Relación bidireccional de uno a muchos entre Coche y Suv, donde un
+	// Relaciï¿½n bidireccional de uno a muchos entre Coche y Suv, donde un
 	// Coche forma parte de muchos Suvs y un Suv solo es un coche
 	@ManyToOne(fetch = FetchType.LAZY)
 	// InsertarÃ¡ la columna de la FK que viene de Coche
